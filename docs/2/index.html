@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>34 Archivos.Vue(Single File Components) &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:27:25 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">34 Archivos.Vue(Single File Components)</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Hemos dicho en forma reiterada que Vue propone descomponer una aplicación en componentes.</p>
+<p>Utilizamos Vue CLI para facilitar tener el esqueleto básico de nuestra aplicación. Veremos en este concepto los pasos para crear una componente y consumirla desde la componente principal App.vue.</p>
+<h1 id="problema">Problema</h1>
+<p>Crear una componente &lsquo;CartaPoker.vue&rsquo; y utilizar Vue CLI para crear el proyecto y almacenar la componente en un archivo *.vue</p>
+<ol>
+<li>Creamos el proyecto utilizando Vue CLI:</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">vue</span> <span style="color:#a6e22e">init</span> <span style="color:#a6e22e">webpack</span><span style="color:#f92672">-</span><span style="color:#a6e22e">simple</span> <span style="color:#a6e22e">proyecto003</span>
+</code></pre></div><p><img src="https://www.tutorialesprogramacionya.com/vueya/imagentema/foto012.jpg" alt=""></p>
+<ol start="2">
+<li>Descendemos a la carpeta proyecto003 y procedemos a instalar todos los archivos de dependencias de nuestro proyecto:</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">cd</span> <span style="color:#a6e22e">proyecto003</span>
+<span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">install</span>
+</code></pre></div><ol start="3">
+<li>Procederemos a borrar de la plantilla que genera Vue CLI todo lo que no necesitamos.</li>
+</ol>
+<p>Abrimos el archivo App.vue localizado en la subcarpeta &lsquo;src&rsquo; y procedemos a borrar todo lo que no necesitaremos:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span>{{ <span style="color:#a6e22e">mensaje</span> }}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/h1&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app&#39;</span>,
+  <span style="color:#a6e22e">data</span> () {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">mensaje</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Mi primer componente&#39;</span>
+    }
+  }
+}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">style</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#a6e22e">h1</span> {
+    <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">decoration</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">underline</span>;
+  }
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/style&gt;</span>
+</code></pre></div><p>Es decir solo hemos dejado en la plantilla de la componente &ldquo;App.vue&rdquo; que se muestre el contenido del atributo &lsquo;mensaje&rsquo;:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span>{{ <span style="color:#a6e22e">mensaje</span> }}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/h1&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+</code></pre></div><p>La componente App define el atributo &lsquo;mensaje&rsquo; y lo inicializa con el string &lsquo;Mi primer componente&rsquo;:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app&#39;</span>,
+  <span style="color:#a6e22e">data</span> () {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">mensaje</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Mi primer componente&#39;</span>
+    }
+  }
+}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</code></pre></div><p>En la sección de estilos definimos que las etiquetas &lsquo;h1&rsquo; deben aparecer subrayadas:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">style</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#a6e22e">h1</span> {
+    <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">decoration</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">underline</span>;
+  }
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/style&gt;</span>
+</code></pre></div><ol start="4">
+<li>Si queremos ver si todo funciona hasta este momento antes de comenzar a crear nuestra componente &lsquo;carta-poker&rsquo; podemos ejecutar la aplicación escribiendo en la línea de comandos de Node.js:</li>
+</ol>
+<pre><code>npm run dev
+
+</code></pre><p><img src="https://www.tutorialesprogramacionya.com/vueya/imagentema/foto013.jpg" alt=""></p>
+<p>Se debe abrir el navegador y mostrarse la aplicación en ejecución:</p>
+<p><img src="https://www.tutorialesprogramacionya.com/vueya/imagentema/foto014.jpg" alt=""></p>
+<ol start="5">
+<li>Ahora crearemos la componente CartaPoker. Lo más conveniente en vez de almacenarla en la carpeta src es crear una subcarpeta llamada &lsquo;componentes&rsquo; y dentro de ella crearemos el archivo: &lsquo;CartaPoker.vue&rsquo;:</li>
+</ol>
+<p><img src="https://www.tutorialesprogramacionya.com/vueya/imagentema/foto015.jpg" alt=""></p>
+<p>La componente CartaPoker.vue tiene la siguiente codificación:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;carta-poker&#34;</span><span style="color:#f92672">&gt;</span>
+  {{<span style="color:#a6e22e">valor</span>}}<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">br</span><span style="color:#f92672">&gt;</span>{{<span style="color:#a6e22e">nombre</span>[<span style="color:#a6e22e">tipo</span>]}}
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/span&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">data</span>() {
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#a6e22e">tipo</span><span style="color:#f92672">:</span> Math.<span style="color:#a6e22e">trunc</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>), 
+        <span style="color:#a6e22e">valor</span><span style="color:#f92672">:</span> Math.<span style="color:#a6e22e">trunc</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>,
+        <span style="color:#a6e22e">nombre</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;pica&#39;</span>, <span style="color:#e6db74">&#39;corazon&#39;</span>, <span style="color:#e6db74">&#39;diamante&#39;</span>, <span style="color:#e6db74">&#39;trébol&#39;</span>]      
+    }
+  }
+}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">style</span><span style="color:#f92672">&gt;</span>
+.<span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span> {
+  <span style="color:#a6e22e">display</span><span style="color:#f92672">:</span><span style="color:#a6e22e">inline</span><span style="color:#f92672">-</span><span style="color:#a6e22e">block</span>;
+  <span style="color:#a6e22e">background</span><span style="color:#f92672">-</span><span style="color:#a6e22e">color</span><span style="color:#f92672">:</span><span style="color:#a6e22e">black</span>; 
+  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span><span style="color:#a6e22e">white</span>; 
+  <span style="color:#a6e22e">border</span><span style="color:#f92672">-</span><span style="color:#a6e22e">radius</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span><span style="color:#a6e22e">px</span>;
+  <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span><span style="color:#ae81ff">8</span><span style="color:#a6e22e">rem</span>;
+  <span style="color:#a6e22e">height</span><span style="color:#f92672">:</span><span style="color:#ae81ff">13</span><span style="color:#a6e22e">rem</span>;
+  <span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">size</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span><span style="color:#a6e22e">rem</span>;
+  <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">align</span><span style="color:#f92672">:</span><span style="color:#a6e22e">center</span>
+}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/style&gt;</span>
+
+</code></pre></div><p>Como podemos ver hemos declarado las tres secciones fundamentales de todo archivo *.vue</p>
+<p>En el template definimos el HTML y rescatamos los datos del modelo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">span</span> <span style="color:#66d9ef">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;carta-poker&#34;</span><span style="color:#f92672">&gt;</span>
+  {{<span style="color:#a6e22e">valor</span>}}<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">br</span><span style="color:#f92672">&gt;</span>{{<span style="color:#a6e22e">nombre</span>[<span style="color:#a6e22e">tipo</span>]}}
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/span&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+</code></pre></div><p>Luego mediante la declaración &lsquo;export default&rsquo; exportamos la componente que será usada en el archivo App.vue:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">data</span>() {
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#a6e22e">tipo</span><span style="color:#f92672">:</span> Math.<span style="color:#a6e22e">trunc</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>), 
+        <span style="color:#a6e22e">valor</span><span style="color:#f92672">:</span> Math.<span style="color:#a6e22e">trunc</span>(Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">12</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>,
+        <span style="color:#a6e22e">nombre</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;pica&#39;</span>, <span style="color:#e6db74">&#39;corazon&#39;</span>, <span style="color:#e6db74">&#39;diamante&#39;</span>, <span style="color:#e6db74">&#39;trébol&#39;</span>]      
+    }
+  }
+}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+
+</code></pre></div><p>Por último tenemos la sección de estilos que utilizamos en nuestra componente:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">&lt;</span><span style="color:#f92672">style</span><span style="color:#f92672">&gt;</span>
+.<span style="color:#a6e22e">carta-poker</span> {
+  <span style="color:#66d9ef">display</span>:<span style="color:#66d9ef">inline</span><span style="color:#f92672">-</span><span style="color:#66d9ef">block</span>;
+  <span style="color:#66d9ef">background-color</span>:<span style="color:#66d9ef">black</span>; 
+  <span style="color:#66d9ef">color</span>:<span style="color:#66d9ef">white</span>; 
+  <span style="color:#66d9ef">border-radius</span>:<span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+  <span style="color:#66d9ef">width</span>:<span style="color:#ae81ff">8</span><span style="color:#66d9ef">rem</span>;
+  <span style="color:#66d9ef">height</span>:<span style="color:#ae81ff">13</span><span style="color:#66d9ef">rem</span>;
+  <span style="color:#66d9ef">font-size</span>:<span style="color:#ae81ff">2</span><span style="color:#66d9ef">rem</span>;
+  <span style="color:#66d9ef">text-align</span>:<span style="color:#66d9ef">center</span>
+}
+<span style="color:#f92672">&lt;/</span><span style="color:#f92672">style</span><span style="color:#f92672">&gt;</span>
+</code></pre></div><ol start="6">
+<li>Volvamos a nuestro archivo App.vue y lo modifiquemos para poder consumir la componente &lsquo;CartaPoker.vue&rsquo;:</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span>{{ <span style="color:#a6e22e">mensaje</span> }}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/h1&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/carta-poker&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/carta-poker&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/carta-poker&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/carta-poker&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/carta-poker&gt;                </span>
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CartaPoker</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./componentes/CartaPoker.vue&#39;</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">components</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#39;carta-poker&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CartaPoker</span>
+  },
+  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app&#39;</span>,
+  <span style="color:#a6e22e">data</span> () {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">mensaje</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Mi primer componente&#39;</span>
+    }
+  }
+}
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">style</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#a6e22e">h1</span> {
+    <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">decoration</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">underline</span>;
+  }
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/style&gt;</span>
+</code></pre></div><p>Primero veamos en la sección de script como importamos la componente &lsquo;CartaPoker&rsquo; del archivo CartaPoker.vue:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CartaPoker</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./componentes/CartaPoker.vue&#39;</span>
+</code></pre></div><p>También debemos iniciar la propiedad components con un objeto literal donde definamos un nombre de propiedad y como valor el nombre de la componente:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">components</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#39;carta-poker&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">CartaPoker</span>
+  },
+  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;app&#39;</span>,
+  <span style="color:#a6e22e">data</span> () {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">mensaje</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Mi primer componente&#39;</span>
+    }
+  }
+}
+
+</code></pre></div><p>En la sección del template hemos definido cinco objetos de tipo &lsquo;carta-poker&rsquo;:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">template</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span>{{ <span style="color:#a6e22e">mensaje</span> }}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/h1&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/carta-poker&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/carta-poker&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/carta-poker&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/carta-poker&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">carta</span><span style="color:#f92672">-</span><span style="color:#a6e22e">poker</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/carta-poker&gt;                </span>
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/template&gt;</span>
+</code></pre></div><p>Si volvemos a ejecutar la aplicación:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">dev</span>
+</code></pre></div><p>Tenemos en el navegador nuestra aplicación con las 5 cartas de Poker:</p>
+<p><img src="https://www.tutorialesprogramacionya.com/vueya/imagentema/foto016.jpg" alt=""></p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/1/" class="left arrow">&#8592;</a>
+		<a href="/3/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2798579 -0500 -05 m=&#43;1.356659901">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

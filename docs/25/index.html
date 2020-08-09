@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>11 Formularios:control select &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:29:03 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">11 Formularios:control select</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Otro control que debemos ver como lo trabaja el framework Vue es el &lsquo;select&rsquo;.</p>
+<p>Veamos como procesar un control HTML select de selección única. Lo más conveniente es disponer la primer opción desactiva pidiendo al operador que seleccione su opción.</p>
+<h1 id="problema">Problema</h1>
+<p>Mostrar en un control de tipo &lsquo;select&rsquo; los días de la semana. Cuando el operador lo selecciona mostrar cual se seleccionó.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+ &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">select</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dia&#34;</span>&gt;
+     &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">disabled</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;Seleccione un día&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">opcion</span>&gt;Lunes&lt;/<span style="color:#f92672">opcion</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Martes&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Miércoles&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Jueves&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Viernes&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Sábado&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Domingo&lt;/<span style="color:#f92672">option</span>&gt;
+   &lt;/<span style="color:#f92672">select</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;Día seleccionado:{{dia}}&lt;/<span style="color:#f92672">p</span>&gt;
+ &lt;/<span style="color:#f92672">div</span>&gt;
+ 
+ &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+ &lt;<span style="color:#f92672">script</span>&gt;
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+       <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+       <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">dia</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;&#39;</span>
+       }
+   })
+ &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><p>Seleccione un día :</p>
+<p>Día seleccionado: <code>     </code></p>
+<p>Definimos el control &lsquo;select&rsquo; con ocho opciones, la primera que es la seleccionada por defecto aparece desactiva y el valor es un string vacío, asociamos mediante la directiva v-model con la propiedad &lsquo;dia&rsquo;:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+&lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">select</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dia&#34;</span>&gt;
+     &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">disabled</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;Seleccione un día&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">opcion</span>&gt;Lunes&lt;/<span style="color:#f92672">opcion</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Martes&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Miércoles&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Jueves&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Viernes&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Sábado&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Domingo&lt;/<span style="color:#f92672">option</span>&gt;
+   &lt;/<span style="color:#f92672">select</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;
+
+</code></pre></div><p>En el modelo definimos la propiedad dia:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+       <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+       <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">dia</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;&#39;</span>
+       }
+   })
+
+</code></pre></div><p>Cada vez que se cambia el elemento seleccionado, se cambia la propiedad &lsquo;dia&rsquo; y también se actualiza la vista donde imprimimos dicha propiedad:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+&lt;<span style="color:#f92672">p</span>&gt;Día seleccionado:{{dia}}&lt;/<span style="color:#f92672">p</span>&gt;
+
+</code></pre></div><h1 id="selección-múltiple">Selección múltiple</h1>
+<p>Un control select de HTML si tiene definida la propiedad &lsquo;multiple&rsquo; luego el operador puede seleccionar varios elementos de la lista. Los valores seleccionados se almacenan en un vector.</p>
+<p>Vemos el ejemplo anterior con selecciones múltiples:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+ &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">select</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dia&#34;</span> <span style="color:#a6e22e">multiple</span>&gt;
+     &lt;<span style="color:#f92672">opcion</span>&gt;Lunes&lt;/<span style="color:#f92672">opcion</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Martes&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Miércoles&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Jueves&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Viernes&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Sábado&lt;/<span style="color:#f92672">option</span>&gt;
+     &lt;<span style="color:#f92672">option</span>&gt;Domingo&lt;/<span style="color:#f92672">option</span>&gt;
+   &lt;/<span style="color:#f92672">select</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;Día seleccionado:{{dia}}&lt;/<span style="color:#f92672">p</span>&gt;
+ &lt;/<span style="color:#f92672">div</span>&gt;
+ 
+ &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+ &lt;<span style="color:#f92672">script</span>&gt;
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+       <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+       <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">dia</span><span style="color:#f92672">:</span>[]
+       }
+   })
+ &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Día</span> <span style="color:#a6e22e">seleccionado</span><span style="color:#f92672">:</span>[ <span style="color:#e6db74">&#34;Martes&#34;</span> ]
+
+</code></pre></div><p>El único cambio en la vista es que hemos agregado la propiedad multiple al control &lsquo;select&rsquo;:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">select</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dia&#34;</span> <span style="color:#a6e22e">multiple</span>&gt;
+</code></pre></div><p>También definimos el atributo del modelo como arreglo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">        dia: []
+</code></pre></div><p>Cuando imprimimos el vector dia aparecen todas las componentes que tiene:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">   &lt;<span style="color:#f92672">p</span>&gt;Día seleccionado:{{dia}}&lt;/<span style="color:#f92672">p</span>&gt;
+</code></pre></div><p>Podemos utilizar la directiva v-for para iterar por el arreglo y acceder a cada una como vimos anteriormente.</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/24/" class="left arrow">&#8592;</a>
+		<a href="/26/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2569206 -0500 -05 m=&#43;1.333722601">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

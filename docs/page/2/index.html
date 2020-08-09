@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+	<meta name="generator" content="Hugo 0.74.3" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="">
+
+		<title>VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="/index.xml" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	
+
+
+	<div class="catalogue">
+		
+			<a href="http://example.org/25/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:03 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">11 Formularios:control select</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Otro control que debemos ver como lo trabaja el framework Vue es el &lsquo;select&rsquo;.
+Veamos como procesar un control HTML select de selección única. Lo más conveniente es disponer la primer opción desactiva pidiendo al operador que seleccione su opción.
+Problema Mostrar en un control de tipo &lsquo;select&rsquo; los días de la semana. Cuando el operador lo selecciona mostrar cual se seleccionó.
+&lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;Prueba Vue&lt;/title&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;aplicacion&#34;&gt; &lt;p&gt;&lt;select v-model=&#34;dia&#34;&gt; &lt;option disabled value=&#34;&#34;&gt;Seleccione un día&lt;/option&gt; &lt;opcion&gt;Lunes&lt;/opcion&gt; &lt;option&gt;Martes&lt;/option&gt; &lt;option&gt;Miércoles&lt;/option&gt; &lt;option&gt;Jueves&lt;/option&gt; &lt;option&gt;Viernes&lt;/option&gt; &lt;option&gt;Sábado&lt;/option&gt; &lt;option&gt;Domingo&lt;/option&gt; &lt;/select&gt;&lt;/p&gt; &lt;p&gt;Día seleccionado:{{dia}}&lt;/p&gt; &lt;/div&gt; &lt;script src=&#34;https://cdn.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/24/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:00 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">12 Formulario:control textarea</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Para trabajar con el control HTML &lsquo;textarea&rsquo; debemos tener en cuenta que la interpolación no funciona, debemos definir la directiva v-model y asociarla con nuestro modelo de datos.
+Problema Mostrar un control de tipo textarea. Cada vez que se ingrese un caracter actualizar la cantidad ingresados dentro del control. No permitir cargar más de 200 caracteres.
+&lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;Prueba Vue&lt;/title&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;aplicacion&#34;&gt; &lt;p&gt;&lt;textarea v-model=&#34;comentarios&#34; cols=&#34;100&#34; rows=&#34;5&#34; maxlength=&#34;200&#34;&gt;&lt;/textarea&gt;&lt;/p&gt; &lt;p&gt;Cantidad de caracteres ingresados: {{comentarios.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/23/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:56 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">13 Propiedades Computadas</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Hemos visto hasta ahora dos propiedades fundamentales que define todo objeto de la clase Vue (data y methods):
+var app=new Vue({ el: &#39;#aplicacion&#39;, data:{ }, methods: { }, computed: { } }) La tercer propiedad llamada computed nos permite definir propiedades que surgen de procesos sobre otras propiedades. Las propiedades computadas son realmente métodos.
+Problema Permitir el ingreso del nombre y apellido de una persona mediante dos controles de tipo input.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/22/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:53 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">14 bind (enlace) a estilos CSS en linea</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Como sabemos en HTML a una etiqueta se le pueden asociar estilos (CSS) directamente en la propiedad style:
+&lt;p style=&#34;color: #f00; font-size: 20px&#34;&gt;Mensaje rojo de tamaño 20px&lt;/p&gt; Con el framework Vue podemos enlazar nuestro modelo de datos con una o más propiedades en línea mediante la directiva v-bind.
+Problema Modificar el tamaño de la fuente y color de un párrafo en forma dinámica.
+&lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;Prueba Vue&lt;/title&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;aplicacion&#34;&gt; &lt;p&gt;Tamaño de la fuente: &lt;input type=&#34;range&#34; v-model=&#34;tamañoFuente&#34; min=10 max=100&gt;{{tamañoFuente}} &lt;/p&gt; &lt;p&gt;Color: &lt;input type=&#34;color&#34; v-model=&#34;colorParrafo&#34;&gt; &lt;/p&gt; &lt;p v-bind:style=&#34;{&#39;font-size&#39;:tamañoFuente+&#39;px&#39;, &#39;color&#39;: colorParrafo}&#34;&gt;Párrafo de prueba&lt;/p&gt; &lt;/div&gt; &lt;script src=&#34;https://cdn.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/21/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:49 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">15 bind (enlace) a clases CSS</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            En HTML sabemos que para activar una clase CSS debemos definirla en la propiedad class de la etiqueta:
+&lt;div class=&#34;principio columna2&#34;&gt;Hola mundo&lt;/div&gt; Estamos indicando que la etiqueta &lsquo;div&rsquo; tiene asociadas las clases &lsquo;principio&rsquo; y &lsquo;columna2&rsquo;.
+Veamos como el framework Vue nos permite fácilmente añadir o eliminar clases a una etiqueta en forma reactiva dependiendo del estado del modelo.
+Problema Se tiene un arreglo que almacenan productos (codigo, descripcion, precio y stock) mostrar dichos datos en una tabla HTML.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/20/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:45 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">16 Peticiones Ajax con Vue</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Cuando tenemos que hacer peticiones Ajax nos encontramos que el framework Vue por defecto no nos resuelve este problema.
+En Vue distintas actividades como Ajax queda liberado al desarrollador a utilizar la que más le conviene. La comunidad de Vue ha desarrollado muchas librerías par resolver este tipo de problemas.
+Veremos una de las más populares para hacer peticiones Ajax con Vue. El repositorio donde podemos descargar esta librería se encuentra aquí(vue-resource ).
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/19/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:41 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">17 Ciclo de Vida de un Objeto Vue</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Cada instancia Vue pasa por una serie de pasos de inicialización cuando se crea. Durante este ciclo Vue le da la oportunidad al desarrollador de especificar código propio.
+created Si definimos un atributo en la instancia Vue llamado created y le alamcenamos una función, la misma se ejecutará inmediatamente después que el objeto de la clase Vue se haya creado:
+new Vue({ data: { nombre: &#39;juan&#39; }, created: function () { console.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/18/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:37 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">18 Componentes en Vue</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            La componentes son una de las características fundamentales de Vue. Ayudan a extender las características básicas de las etiquetas HTML y encapsular código. Una componente es generalmente una nueva etiqueta con una interfaz y comportamiento particular.
+Veremos primero la sintaxis mínima necesaria para declarar y utilizar una componente básica con Vue.
+Problema Declarar una componente que muestre el mensaje &ldquo;Hola Mundo&rdquo;
+&lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;Prueba Vue&lt;/title&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;aplicacion&#34;&gt; &lt;hola-mundo&gt;&lt;/hola-mundo&gt; &lt;/div&gt; &lt;script src=&#34;https://cdn.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/17/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:33 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">19 Componentes Propiedades </h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Vimos en el concepto anterior que una característica fundamental de Vue es la posibilidad de definir componentes y ser reutilizadas.
+Una componente puede definir propiedades y pasarle valores a las mismas cuando definimos etiquetas:
+&lt;hola-mundo idioma=&#34;ingles&#34;&gt;&lt;/hola-mundo&gt; En la etiqueta &lsquo;hola-mundo&rsquo; pasamos la propiedad &lsquo;idioma&rsquo; con el valor &lsquo;ingles&rsquo;. Esto es lo que ya usamos en HTML para informar a la etiqueta valores que debe tener en cuenta.
+Veamos ahora como una componente en Vue define y almacena el valor de la propiedad:
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/16/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:28 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">20 Componentes:Propiedades de tipo objeto y vector</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            En el concepto anterior pasamos en la propiedad de la componente un string, podemos pasar cualquier tipo de dato para que la componente lo procese
+Veremos de pasar un vector de objetos literales a la componente.
+Problema Crear una componente llamada &lsquo;articulos&rsquo; que tenga una propiedad que reciba un vector de objetos literales. El objetivo de la componente es mostrar los datos del vector de articulos en una tabla HTML:
+        </p>
+    </div>
+</a>
+
+		
+	</div>
+
+	<div class="pagination">
+		
+			<a href="/" class="left arrow">&#8592;</a>
+		
+		
+			<a href="/page/3/" class="right arrow">&#8594;</a>
+		
+
+		<span>2</span>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.3252524 -0500 -05 m=&#43;1.402054401">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

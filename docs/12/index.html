@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>24 Componentes:slot-scope &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:28:13 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">24 Componentes:slot-scope</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Hay otra variante de slot que nos permiten comunicar datos desde la componente a donde la definimos a la misma.</p>
+<p>Con esta variante podemos crear una componente que tenga una forma de mostrar datos por defecto, pero si se define un slot-scope luego la forma de mostrar los datos queda como responsabilidad fuera de la componente.</p>
+<h1 id="problema">Problema</h1>
+<p>Crear una componente llamada &lsquo;dias-semana&rsquo;. Por defecto muestra los días uno al lado del otro separados por un guión. Definir un slot-scope que pase cada día para que en la zona del HTML donde se define un objeto se muestre de diferente forma.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion1&#34;</span>&gt;
+    &lt;<span style="color:#f92672">dias-semana</span>&gt;&lt;/<span style="color:#f92672">dias-semana</span>&gt;
+    &lt;<span style="color:#f92672">hr</span>&gt;
+    &lt;<span style="color:#f92672">dias-semana</span>&gt;
+      &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">slot-scope</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;valor&#34;</span>&gt;
+       {{valor.nombre}} 
+      &lt;/<span style="color:#f92672">h1</span>&gt;
+    &lt;/<span style="color:#f92672">dias-semana</span>&gt;
+    &lt;<span style="color:#f92672">hr</span>&gt;
+    &lt;<span style="color:#f92672">dias-semana</span>&gt;
+      &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">slot-scope</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;valor&#34;</span>&gt;
+        Día:{{valor.nombre}} 
+      &lt;/<span style="color:#f92672">p</span>&gt;
+    &lt;/<span style="color:#f92672">dias-semana</span>&gt;    
+  &lt;/<span style="color:#f92672">div</span>&gt;
+ 
+&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+<span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;dias-semana&#39;</span>, {
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span><span style="color:#e6db74">`&lt;div&gt;&lt;slot v-for=&#34;dia in dias&#34; v-bind:nombre=&#34;dia&#34;&gt;{{dia}}-&lt;/slot&gt;&lt;/div&gt;`</span>,
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">dias</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;lunes&#39;</span>, <span style="color:#e6db74">&#39;martes&#39;</span>, <span style="color:#e6db74">&#39;miércoles&#39;</span>, <span style="color:#e6db74">&#39;jueves&#39;</span>, <span style="color:#e6db74">&#39;viernes&#39;</span>, <span style="color:#e6db74">&#39;sábado&#39;</span>, <span style="color:#e6db74">&#39;domingo&#39;</span>]
+    }
+  }
+})
+
+<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion1&#39;</span>
+})
+&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><p>lunes-martes-miércoles-jueves-viernes-sábado-domingo</p>
+<h1 id="lunes">lunes</h1>
+<h1 id="martes">martes</h1>
+<h1 id="miércoles">miércoles</h1>
+<h1 id="jueves">jueves</h1>
+<h1 id="viernes">viernes</h1>
+<h1 id="sábado">sábado</h1>
+<h1 id="domingo">domingo</h1>
+<p>Día:lunes</p>
+<p>Día:martes</p>
+<p>Día:miércoles</p>
+<p>Día:jueves</p>
+<p>Día:viernes</p>
+<p>Día:sábado</p>
+<p>Día:domingo</p>
+<p>En la componente del modelo definimos un vector con los 7 días de la semana. En el template definimos un slot y una propiedad llamada nombre con la directiva v-bind:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;dias-semana&#39;</span>, {
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span><span style="color:#e6db74">`&lt;div&gt;&lt;slot v-for=&#34;dia in dias&#34; v-bind:nombre=&#34;dia&#34;&gt;{{dia}}-&lt;/slot&gt;&lt;/div&gt;`</span>,
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+    <span style="color:#66d9ef">return</span> {
+      <span style="color:#a6e22e">dias</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;lunes&#39;</span>, <span style="color:#e6db74">&#39;martes&#39;</span>, <span style="color:#e6db74">&#39;miércoles&#39;</span>, <span style="color:#e6db74">&#39;jueves&#39;</span>, <span style="color:#e6db74">&#39;viernes&#39;</span>, <span style="color:#e6db74">&#39;sábado&#39;</span>, <span style="color:#e6db74">&#39;domingo&#39;</span>]
+    }
+  }
+})
+</code></pre></div><p>Si definimos una componente sin slot luego se ejecuta el template mostrando cada día separado por un guión:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#f92672">dias-semana</span>&gt;&lt;/<span style="color:#f92672">dias-semana</span>&gt;
+</code></pre></div><p>Si le pasamos un slot con la propiedad slot-spope luego podemos recuperar los datos que se envían desde la componente y mostrarlos según nuestras necesidades:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#f92672">dias-semana</span>&gt;
+      &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">slot-scope</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;valor&#34;</span>&gt;
+       {{valor.nombre}} 
+      &lt;/<span style="color:#f92672">h1</span>&gt;
+    &lt;/<span style="color:#f92672">dias-semana</span>&gt;
+</code></pre></div><p>Se muestran cada día como un título h1.</p>
+<p>El tercer elemento &lsquo;dias-semana&rsquo; se muestran uno por párrafo junto a la etiqueta &lsquo;Día:&rsquo;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#f92672">dias-semana</span>&gt;
+      &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">slot-scope</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;valor&#34;</span>&gt;
+        Día:{{valor.nombre}} 
+      &lt;/<span style="color:#f92672">p</span>&gt;
+    &lt;/<span style="color:#f92672">dias-semana</span>&gt;  
+</code></pre></div>
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/11/" class="left arrow">&#8592;</a>
+		<a href="/13/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2115298 -0500 -05 m=&#43;1.288331801">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

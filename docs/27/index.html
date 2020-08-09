@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>9 Formularios:controles radio &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:29:12 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">9 Formularios:controles radio</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Veremos como administrar en Vue un conjunto de controles input (radio) para identificar la opción seleccionada.</p>
+<p>Para trabajar un conjunto de controles radio debemos definir en el modelo de datos una única propiedad que almacenará el valor de la seleccionada.</p>
+<p>Es importante decir que debemos fijar en el modelo cual es la que se encuentra seleccionada inicialmente, no rescata los valores iniciales definidos en un control como podría ser:</p>
+<pre><code>&lt;input checked type=&quot;radio&quot; value=&quot;universitarios&quot; v-model=&quot;estudios&quot; id=&quot;universitarios&quot;&gt;
+Luego deberíamos iniciar el modelo:
+</code></pre><pre><code>    estudios: 'universitarios'
+</code></pre>
+<h1 id="problema">Problema</h1>
+<p>Crear cuatro controles de tipo radio que permitan seleccionar que tipo de estudios tiene el visitante. Mostrar en la parte inferior cual se encuentra actualmente seleccionado a partir de los datos del modelo.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+ &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+    &lt;<span style="color:#f92672">p</span>&gt;
+      &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Sin estudios&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;estudios&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sinestudios&#34;</span>&gt;
+      &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sinestudios&#34;</span>&gt;Sin estudios&lt;/<span style="color:#f92672">label</span>&gt;
+    &lt;/<span style="color:#f92672">p</span>&gt;        
+    &lt;<span style="color:#f92672">p</span>&gt;
+      &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Primarios&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;estudios&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primarios&#34;</span>&gt;
+      &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primarios&#34;</span>&gt;Primarios&lt;/<span style="color:#f92672">label</span>&gt;
+    &lt;/<span style="color:#f92672">p</span>&gt;
+    &lt;<span style="color:#f92672">p</span>&gt;
+      &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Secundarios&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;estudios&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;secundarios&#34;</span>&gt;
+      &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;secundarios&#34;</span>&gt;Secundarios&lt;/<span style="color:#f92672">label</span>&gt;
+    &lt;/<span style="color:#f92672">p</span>&gt;
+    &lt;<span style="color:#f92672">p</span>&gt;
+      &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">checked</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;universitarios&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;estudios&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;universitarios&#34;</span>&gt;
+      &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;universitarios&#34;</span>&gt;Universitarios&lt;/<span style="color:#f92672">label</span>&gt;
+    &lt;/<span style="color:#f92672">p</span>&gt;
+    &lt;<span style="color:#f92672">p</span>&gt;Sus estudios son:{{estudios}}&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+
+  &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+  &lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+      <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">estudios</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Sin estudios&#39;</span>
+      }
+    })
+  &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><ul>
+<li>
+<p>Sin estudios</p>
+</li>
+<li>
+<p>Primarios</p>
+</li>
+<li>
+<p>Secundarios</p>
+</li>
+<li>
+<p>Universitarios</p>
+</li>
+<li>
+<p>Sus estudios son:Sin estudios</p>
+</li>
+</ul>
+<p>Todos los controles radio están asociados a la misma propiedad estudios definida en el modelo de Vue:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+      &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Sin estudios&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;estudios&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sinestudios&#34;</span>&gt;
+      &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Primarios&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;estudios&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;primarios&#34;</span>&gt;
+      &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Secundarios&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;estudios&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;secundarios&#34;</span>&gt;
+      &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">checked</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;universitarios&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;estudios&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;universitarios&#34;</span>&gt;
+
+</code></pre></div><p>El primer radio es el que aparece seleccionado por defecto debido a que en el modelo lo inicializamos con el value del primer radio:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+      <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">estudios</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Sin estudios&#39;</span>
+      }
+    })
+  &lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div>
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/26/" class="left arrow">&#8592;</a>
+		<a href="/28/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2609094 -0500 -05 m=&#43;1.337711401">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

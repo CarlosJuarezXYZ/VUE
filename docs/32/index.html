@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>4 Directivas v-for con arreglos &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:29:34 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">4 Directivas v-for con arreglos</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>vimos en el concepto anterior como podemos condicionar que aparezca o no un elemento HTML dependiendo del estado de una propiedad del modelo de datos. Ahora veremos como podemos mostrar datos almacenados en el modelo en un arreglo.</p>
+<p>Para mostrar datos almacenados en un arreglo en el modelo debemos iterar la estructura de datos e imprimir uno a uno dichos elementos mediante la directiva v-for.</p>
+<h1 id="problema">Problema</h1>
+<p>Definir en el modelo de datos un vector con nombres de lenguajes de programación. Mostrar dichos datos en una lista no ordenada de HTML.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+    &lt;<span style="color:#f92672">ul</span>&gt;
+      &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguaje in lenguajes&#34;</span>&gt;{{lenguaje}}&lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;/<span style="color:#f92672">ul</span>&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+
+  &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;   
+  &lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+      <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">lenguajes</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;C&#39;</span>, <span style="color:#e6db74">&#39;C++&#39;</span>, <span style="color:#e6db74">&#39;C#&#39;</span>, <span style="color:#e6db74">&#39;Java&#39;</span>, <span style="color:#e6db74">&#39;Ruby&#39;</span>, <span style="color:#e6db74">&#39;Kotlin&#39;</span>]
+      }
+    })
+  &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><pre><code>* C
+* C++
+* C#
+* Java
+* Ruby
+* Kotlin
+
+</code></pre><p>La directiva v-for itera sobre la propiedad &lsquo;lenguajes&rsquo; definida en el modelo de datos y almacena en cada vuelta un elemento del vector en la variable &lsquo;lenguaje&rsquo;, la misma se muestra mediante interpolación {{lenguaje}}:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+    &lt;<span style="color:#f92672">ul</span>&gt;
+      &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguaje in lenguajes&#34;</span>&gt;{{lenguaje}}&lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;/<span style="color:#f92672">ul</span>&gt;
+    
+</code></pre></div><p>El vector está creado en el modelo definido en el objeto app de la clase Vue:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+      <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">lenguajes</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;C&#39;</span>, <span style="color:#e6db74">&#39;C++&#39;</span>, <span style="color:#e6db74">&#39;C#&#39;</span>, <span style="color:#e6db74">&#39;Java&#39;</span>, <span style="color:#e6db74">&#39;Ruby&#39;</span>, <span style="color:#e6db74">&#39;Kotlin&#39;</span>]
+      }
+    })
+
+</code></pre></div><p>Tengamos en cuenta que es un ejemplo ya que si siempre tenemos que mostrar dichos lenguajes en la lista HTML sería mejor generar HTML puro:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">ul</span>&gt;
+&lt;<span style="color:#f92672">li</span>&gt;C&lt;/<span style="color:#f92672">li</span>&gt;
+&lt;<span style="color:#f92672">li</span>&gt;C++&lt;/<span style="color:#f92672">li</span>&gt;
+&lt;<span style="color:#f92672">li</span>&gt;C#&lt;/<span style="color:#f92672">li</span>&gt;
+&lt;<span style="color:#f92672">li</span>&gt;Java&lt;/<span style="color:#f92672">li</span>&gt;
+&lt;<span style="color:#f92672">li</span>&gt;Ruby&lt;/<span style="color:#f92672">li</span>&gt;
+&lt;<span style="color:#f92672">li</span>&gt;Kotlin&lt;/<span style="color:#f92672">li</span>&gt;
+&lt;/<span style="color:#f92672">ul</span>&gt;
+
+</code></pre></div><p>Pero en muchas situaciones dicho vector podría llegar de una petición AJAX por ejemplo, o de eventos del operador sobre la página.</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/31/" class="left arrow">&#8592;</a>
+		<a href="/33/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2848469 -0500 -05 m=&#43;1.361648901">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

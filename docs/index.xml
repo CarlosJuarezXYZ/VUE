@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VUE</title>
+    <link>http://example.org/</link>
+    <description>Recent content on VUE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    
+	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1 ¿Que es Vue?</title>
+      <link>http://example.org/35/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:46 -0500</pubDate>
+      
+      <guid>http://example.org/35/</guid>
+      <description>Vue es un framework de Javascript progresivo para la generación de interfaces visuales.
+Está pensado para su fácil adopción en aplicaciones pequeñas pero tiene la posibilidad de generar componentes y ser reutilizadas en proyectos medianos y grandes.
+Sus principales competidores son Angular (Google) y React (Facebook), a diferencia de estos Vue no es un desarrollo de una gran empresa pero tiene el apoyo de muchas pequeñas y una gran comunidad.</description>
+    </item>
+    
+    <item>
+      <title>2 Directivas en Vue</title>
+      <link>http://example.org/34/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:42 -0500</pubDate>
+      
+      <guid>http://example.org/34/</guid>
+      <description>Una directiva es un atributo de un elemento HTML que luego va a interpretar el framework Vue.
+Las directivas siempre comienzan con los caracteres &amp;ldquo;v-&amp;rdquo; y son ejemplos de directivas:
+ v-bind v-model v-if v-else v-for  Existen muchas más pero nombramos estas que serán las que primero utilizaremos.
+Veamos como se define una directiva en un elemento HTML:
+&amp;lt;input type=&amp;#34;text&amp;#34; v-model=&amp;#34;nombre&amp;#34;&amp;gt; La directiva v-model asocia el dato que se ingresa en el control &amp;ldquo;input&amp;rdquo; con un atributo del modelo de datos que debe definirse luego en Javascript:</description>
+    </item>
+    
+    <item>
+      <title>3 Directivas v-if,v-else-if,v-show</title>
+      <link>http://example.org/33/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:38 -0500</pubDate>
+      
+      <guid>http://example.org/33/</guid>
+      <description>Dijimos anteriormente que Vue utiliza el concepto de directivas para una comunicación entre la vista (HTML) y el modelo (programa en Javascript)
+La primer directiva condicional que veremos se llama v-if y me permite definir una condición que dependiendo de su resultado luego la etiqueta HTML o conjunto de etiquetas se muestran o no.
+Problema Ingresar una edad en un control de tipo input (number) y mostrar un mensaje si se ingresa un valor mayor o igual a 18.</description>
+    </item>
+    
+    <item>
+      <title>4 Directivas v-for con arreglos</title>
+      <link>http://example.org/32/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:34 -0500</pubDate>
+      
+      <guid>http://example.org/32/</guid>
+      <description>vimos en el concepto anterior como podemos condicionar que aparezca o no un elemento HTML dependiendo del estado de una propiedad del modelo de datos. Ahora veremos como podemos mostrar datos almacenados en el modelo en un arreglo.
+Para mostrar datos almacenados en un arreglo en el modelo debemos iterar la estructura de datos e imprimir uno a uno dichos elementos mediante la directiva v-for.
+Problema Definir en el modelo de datos un vector con nombres de lenguajes de programación.</description>
+    </item>
+    
+    <item>
+      <title>5 Directivas v-for con arreglos de objetos literales</title>
+      <link>http://example.org/31/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:26 -0500</pubDate>
+      
+      <guid>http://example.org/31/</guid>
+      <description>Veremos una variante cuando trabajamos con la directiva v-for y debemos iterar un arreglo con objetos para acceder a todos sus elementos.
+Problema Se tiene el siguiente arreglo con objetos literales que representan artículos:
+articulos: [{ codigo: 1, descripcion: &amp;#39;papas&amp;#39;, precio: 12.52 },{ codigo: 2, descripcion: &amp;#39;naranjas&amp;#39;, precio: 21 },{ codigo: 3, descripcion: &amp;#39;peras&amp;#39;, precio: 18.20 }] Mostrar en una tabla HTML los datos almacenados en el arreglo.
+&amp;lt;!doctype html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Prueba Vue&amp;lt;/title&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1, shrink-to-fit=no&amp;#34;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;aplicacion&amp;#34;&amp;gt; &amp;lt;table border=&amp;#34;1&amp;#34;&amp;gt; &amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;Código&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;Descripción&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;Precio&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt; &amp;lt;template v-for=&amp;#34;articulo in articulos&amp;#34;&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;td&amp;gt;{{articulo.</description>
+    </item>
+    
+    <item>
+      <title>6 captura de eventos en Vue(v-on:click)</title>
+      <link>http://example.org/30/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:23 -0500</pubDate>
+      
+      <guid>http://example.org/30/</guid>
+      <description>En Vue podemos capturar todos los eventos que genera el DOM (clic de un botón, presión de una tecla, toma de foco de un control de un formulario etc.) y para ello tenemos una directiva llamada v-on
+La directiva v-on captura todos los eventos, pero podemos ser mas precisos y filtrar cual evento capturar:
+ v-on:click v-on:dblclick v-on:mouseenter v-on:mouseleave v-on:mousemove v-on:keypress v-on:keyup etc.  Problema Mostrar un botón que tenga como etiqueta un 0.</description>
+    </item>
+    
+    <item>
+      <title>7 Eventos:v-on:keypress,v-on:keyup</title>
+      <link>http://example.org/29/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:19 -0500</pubDate>
+      
+      <guid>http://example.org/29/</guid>
+      <description>Veamos como se captura cuando se presiona una tecla y cuando se la suelta. Para esto tenemos los eventos v-on:keypress que se dispara cuando el operador presiona una tecla y v-on:keyup cuando suelta la tecla.
+Debemos definir que etiqueta HTML capturará el evento de presión de tecla.
+Problema Mostrar en una lista ordenada una serie de actividades a realizar. Asociar dichas actividades a un vector en el modelo. Mediante un control de tipo input (text) permitir ingresar nuevas actividades y al presionar la tecla enter actualizar la lista ordenada con la nueva actividad.</description>
+    </item>
+    
+    <item>
+      <title>8 Eventos: v-on:submit</title>
+      <link>http://example.org/28/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:15 -0500</pubDate>
+      
+      <guid>http://example.org/28/</guid>
+      <description>Un evento muy usado es cuando se presiona un control de tipo input (submit) que por defecto toma todos los datos del formulario y los envía a nuestro servidor web.
+Veremos como podemos prevenir el envío y ejecutar algún algoritmo en Javascript mediante Vue.
+Problema Almacenar en un arreglo códigos de artículos, sus descripciones y precios. Mostrar en una tabla HTML los datos y mediante un formulario HTML permitir ingresar nuevos datos en el arreglo.</description>
+    </item>
+    
+    <item>
+      <title>9 Formularios:controles radio</title>
+      <link>http://example.org/27/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:12 -0500</pubDate>
+      
+      <guid>http://example.org/27/</guid>
+      <description>Veremos como administrar en Vue un conjunto de controles input (radio) para identificar la opción seleccionada.
+Para trabajar un conjunto de controles radio debemos definir en el modelo de datos una única propiedad que almacenará el valor de la seleccionada.
+Es importante decir que debemos fijar en el modelo cual es la que se encuentra seleccionada inicialmente, no rescata los valores iniciales definidos en un control como podría ser:
+&amp;lt;input checked type=&amp;quot;radio&amp;quot; value=&amp;quot;universitarios&amp;quot; v-model=&amp;quot;estudios&amp;quot; id=&amp;quot;universitarios&amp;quot;&amp;gt; Luego deberíamos iniciar el modelo:  estudios: &#39;universitarios&#39;  Problema Crear cuatro controles de tipo radio que permitan seleccionar que tipo de estudios tiene el visitante.</description>
+    </item>
+    
+    <item>
+      <title>10 Formularios: control checkbox</title>
+      <link>http://example.org/26/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:08 -0500</pubDate>
+      
+      <guid>http://example.org/26/</guid>
+      <description>Veamos ahora como asociar un control input (checkbox) con el modelo de datos de Vue.
+Un checkbox puede estar seleccionado o no. Debemos almacenar en el modelo un valor true o false indicando si queremos que el checkbox esté o no seleccionado.
+Problema Mostrar un checkbox no seleccionado. Cuando el operador lo presione hacer visible un botón de confirmación.
+&amp;lt;!doctype html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Prueba Vue&amp;lt;/title&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1, shrink-to-fit=no&amp;#34;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;aplicacion&amp;#34;&amp;gt; &amp;lt;p&amp;gt; &amp;lt;input type=&amp;#34;checkbox&amp;#34; v-model=&amp;#34;terminos&amp;#34;&amp;gt; Acepto los términos y condiciones &amp;lt;/p&amp;gt; &amp;lt;button v-if=&amp;#34;terminos&amp;#34;&amp;gt;Confirmar&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.</description>
+    </item>
+    
+    <item>
+      <title>11 Formularios:control select</title>
+      <link>http://example.org/25/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:03 -0500</pubDate>
+      
+      <guid>http://example.org/25/</guid>
+      <description>Otro control que debemos ver como lo trabaja el framework Vue es el &amp;lsquo;select&amp;rsquo;.
+Veamos como procesar un control HTML select de selección única. Lo más conveniente es disponer la primer opción desactiva pidiendo al operador que seleccione su opción.
+Problema Mostrar en un control de tipo &amp;lsquo;select&amp;rsquo; los días de la semana. Cuando el operador lo selecciona mostrar cual se seleccionó.
+&amp;lt;!doctype html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Prueba Vue&amp;lt;/title&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1, shrink-to-fit=no&amp;#34;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;aplicacion&amp;#34;&amp;gt; &amp;lt;p&amp;gt;&amp;lt;select v-model=&amp;#34;dia&amp;#34;&amp;gt; &amp;lt;option disabled value=&amp;#34;&amp;#34;&amp;gt;Seleccione un día&amp;lt;/option&amp;gt; &amp;lt;opcion&amp;gt;Lunes&amp;lt;/opcion&amp;gt; &amp;lt;option&amp;gt;Martes&amp;lt;/option&amp;gt; &amp;lt;option&amp;gt;Miércoles&amp;lt;/option&amp;gt; &amp;lt;option&amp;gt;Jueves&amp;lt;/option&amp;gt; &amp;lt;option&amp;gt;Viernes&amp;lt;/option&amp;gt; &amp;lt;option&amp;gt;Sábado&amp;lt;/option&amp;gt; &amp;lt;option&amp;gt;Domingo&amp;lt;/option&amp;gt; &amp;lt;/select&amp;gt;&amp;lt;/p&amp;gt; &amp;lt;p&amp;gt;Día seleccionado:{{dia}}&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.</description>
+    </item>
+    
+    <item>
+      <title>12 Formulario:control textarea</title>
+      <link>http://example.org/24/</link>
+      <pubDate>Fri, 07 Aug 2020 20:29:00 -0500</pubDate>
+      
+      <guid>http://example.org/24/</guid>
+      <description>Para trabajar con el control HTML &amp;lsquo;textarea&amp;rsquo; debemos tener en cuenta que la interpolación no funciona, debemos definir la directiva v-model y asociarla con nuestro modelo de datos.
+Problema Mostrar un control de tipo textarea. Cada vez que se ingrese un caracter actualizar la cantidad ingresados dentro del control. No permitir cargar más de 200 caracteres.
+&amp;lt;!doctype html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Prueba Vue&amp;lt;/title&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1, shrink-to-fit=no&amp;#34;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;aplicacion&amp;#34;&amp;gt; &amp;lt;p&amp;gt;&amp;lt;textarea v-model=&amp;#34;comentarios&amp;#34; cols=&amp;#34;100&amp;#34; rows=&amp;#34;5&amp;#34; maxlength=&amp;#34;200&amp;#34;&amp;gt;&amp;lt;/textarea&amp;gt;&amp;lt;/p&amp;gt; &amp;lt;p&amp;gt;Cantidad de caracteres ingresados: {{comentarios.</description>
+    </item>
+    
+    <item>
+      <title>13 Propiedades Computadas</title>
+      <link>http://example.org/23/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:56 -0500</pubDate>
+      
+      <guid>http://example.org/23/</guid>
+      <description>Hemos visto hasta ahora dos propiedades fundamentales que define todo objeto de la clase Vue (data y methods):
+var app=new Vue({ el: &amp;#39;#aplicacion&amp;#39;, data:{ }, methods: { }, computed: { } }) La tercer propiedad llamada computed nos permite definir propiedades que surgen de procesos sobre otras propiedades. Las propiedades computadas son realmente métodos.
+Problema Permitir el ingreso del nombre y apellido de una persona mediante dos controles de tipo input.</description>
+    </item>
+    
+    <item>
+      <title>14 bind (enlace) a estilos CSS en linea</title>
+      <link>http://example.org/22/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:53 -0500</pubDate>
+      
+      <guid>http://example.org/22/</guid>
+      <description>Como sabemos en HTML a una etiqueta se le pueden asociar estilos (CSS) directamente en la propiedad style:
+&amp;lt;p style=&amp;#34;color: #f00; font-size: 20px&amp;#34;&amp;gt;Mensaje rojo de tamaño 20px&amp;lt;/p&amp;gt; Con el framework Vue podemos enlazar nuestro modelo de datos con una o más propiedades en línea mediante la directiva v-bind.
+Problema Modificar el tamaño de la fuente y color de un párrafo en forma dinámica.
+&amp;lt;!doctype html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Prueba Vue&amp;lt;/title&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1, shrink-to-fit=no&amp;#34;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;aplicacion&amp;#34;&amp;gt; &amp;lt;p&amp;gt;Tamaño de la fuente: &amp;lt;input type=&amp;#34;range&amp;#34; v-model=&amp;#34;tamañoFuente&amp;#34; min=10 max=100&amp;gt;{{tamañoFuente}} &amp;lt;/p&amp;gt; &amp;lt;p&amp;gt;Color: &amp;lt;input type=&amp;#34;color&amp;#34; v-model=&amp;#34;colorParrafo&amp;#34;&amp;gt; &amp;lt;/p&amp;gt; &amp;lt;p v-bind:style=&amp;#34;{&amp;#39;font-size&amp;#39;:tamañoFuente+&amp;#39;px&amp;#39;, &amp;#39;color&amp;#39;: colorParrafo}&amp;#34;&amp;gt;Párrafo de prueba&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.</description>
+    </item>
+    
+    <item>
+      <title>15 bind (enlace) a clases CSS</title>
+      <link>http://example.org/21/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:49 -0500</pubDate>
+      
+      <guid>http://example.org/21/</guid>
+      <description>En HTML sabemos que para activar una clase CSS debemos definirla en la propiedad class de la etiqueta:
+&amp;lt;div class=&amp;#34;principio columna2&amp;#34;&amp;gt;Hola mundo&amp;lt;/div&amp;gt; Estamos indicando que la etiqueta &amp;lsquo;div&amp;rsquo; tiene asociadas las clases &amp;lsquo;principio&amp;rsquo; y &amp;lsquo;columna2&amp;rsquo;.
+Veamos como el framework Vue nos permite fácilmente añadir o eliminar clases a una etiqueta en forma reactiva dependiendo del estado del modelo.
+Problema Se tiene un arreglo que almacenan productos (codigo, descripcion, precio y stock) mostrar dichos datos en una tabla HTML.</description>
+    </item>
+    
+    <item>
+      <title>16 Peticiones Ajax con Vue</title>
+      <link>http://example.org/20/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:45 -0500</pubDate>
+      
+      <guid>http://example.org/20/</guid>
+      <description>Cuando tenemos que hacer peticiones Ajax nos encontramos que el framework Vue por defecto no nos resuelve este problema.
+En Vue distintas actividades como Ajax queda liberado al desarrollador a utilizar la que más le conviene. La comunidad de Vue ha desarrollado muchas librerías par resolver este tipo de problemas.
+Veremos una de las más populares para hacer peticiones Ajax con Vue. El repositorio donde podemos descargar esta librería se encuentra aquí(vue-resource ).</description>
+    </item>
+    
+    <item>
+      <title>17 Ciclo de Vida de un Objeto Vue</title>
+      <link>http://example.org/19/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:41 -0500</pubDate>
+      
+      <guid>http://example.org/19/</guid>
+      <description>Cada instancia Vue pasa por una serie de pasos de inicialización cuando se crea. Durante este ciclo Vue le da la oportunidad al desarrollador de especificar código propio.
+created Si definimos un atributo en la instancia Vue llamado created y le alamcenamos una función, la misma se ejecutará inmediatamente después que el objeto de la clase Vue se haya creado:
+new Vue({ data: { nombre: &amp;#39;juan&amp;#39; }, created: function () { console.</description>
+    </item>
+    
+    <item>
+      <title>18 Componentes en Vue</title>
+      <link>http://example.org/18/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:37 -0500</pubDate>
+      
+      <guid>http://example.org/18/</guid>
+      <description>La componentes son una de las características fundamentales de Vue. Ayudan a extender las características básicas de las etiquetas HTML y encapsular código. Una componente es generalmente una nueva etiqueta con una interfaz y comportamiento particular.
+Veremos primero la sintaxis mínima necesaria para declarar y utilizar una componente básica con Vue.
+Problema Declarar una componente que muestre el mensaje &amp;ldquo;Hola Mundo&amp;rdquo;
+&amp;lt;!doctype html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Prueba Vue&amp;lt;/title&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1, shrink-to-fit=no&amp;#34;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;aplicacion&amp;#34;&amp;gt; &amp;lt;hola-mundo&amp;gt;&amp;lt;/hola-mundo&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.</description>
+    </item>
+    
+    <item>
+      <title>19 Componentes Propiedades </title>
+      <link>http://example.org/17/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:33 -0500</pubDate>
+      
+      <guid>http://example.org/17/</guid>
+      <description>Vimos en el concepto anterior que una característica fundamental de Vue es la posibilidad de definir componentes y ser reutilizadas.
+Una componente puede definir propiedades y pasarle valores a las mismas cuando definimos etiquetas:
+&amp;lt;hola-mundo idioma=&amp;#34;ingles&amp;#34;&amp;gt;&amp;lt;/hola-mundo&amp;gt; En la etiqueta &amp;lsquo;hola-mundo&amp;rsquo; pasamos la propiedad &amp;lsquo;idioma&amp;rsquo; con el valor &amp;lsquo;ingles&amp;rsquo;. Esto es lo que ya usamos en HTML para informar a la etiqueta valores que debe tener en cuenta.
+Veamos ahora como una componente en Vue define y almacena el valor de la propiedad:</description>
+    </item>
+    
+    <item>
+      <title>20 Componentes:Propiedades de tipo objeto y vector</title>
+      <link>http://example.org/16/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:28 -0500</pubDate>
+      
+      <guid>http://example.org/16/</guid>
+      <description>En el concepto anterior pasamos en la propiedad de la componente un string, podemos pasar cualquier tipo de dato para que la componente lo procese
+Veremos de pasar un vector de objetos literales a la componente.
+Problema Crear una componente llamada &amp;lsquo;articulos&amp;rsquo; que tenga una propiedad que reciba un vector de objetos literales. El objetivo de la componente es mostrar los datos del vector de articulos en una tabla HTML:</description>
+    </item>
+    
+    <item>
+      <title>21 Componentes:definición de métodos y modelo de datos</title>
+      <link>http://example.org/15/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:24 -0500</pubDate>
+      
+      <guid>http://example.org/15/</guid>
+      <description>Igual que las instancias de la clase Vue, las componentes pueden tener una propiedad methods y data.
+En la propiedad methods definimos todas las funciones y en la propiedad data a diferencia de la instancia Vue debemos plantear una función que retorne un objeto literal con todos los atributos de la componente (es importante recordar que la mecánica es distinta a los objetos Vue)
+Problema Plantear una componente llamada &amp;lsquo;selector-numerico&amp;rsquo; con tres propiedades &amp;lsquo;valor&amp;rsquo;,&amp;lsquo;minimo&amp;rsquo; y &amp;lsquo;maximo&amp;rsquo;.</description>
+    </item>
+    
+    <item>
+      <title>22 Componentes:ubicación del valor de la propiedad template</title>
+      <link>http://example.org/14/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:20 -0500</pubDate>
+      
+      <guid>http://example.org/14/</guid>
+      <description>Hasta ahora hemos visto que toda componente debe definir la propiedad &amp;lsquo;template&amp;rsquo; con los elementos HTML que representan la interfaz visual de la misma.
+Normalmente como dicho valor requiere varias líneas lo más común es utilizar las comillas oblicuas ..... que nos permiten crear string de varias líneas.
+Si tenemos una componente que requiere un template muy largo la metodología de definir el valor del template directamente luego de la propiedad puede ser un poco engorroso.</description>
+    </item>
+    
+    <item>
+      <title>23 Componentes:slot</title>
+      <link>http://example.org/13/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:16 -0500</pubDate>
+      
+      <guid>http://example.org/13/</guid>
+      <description>La interfaz de una componente la podemos transformar mediante datos que le enviamos a sus propiedades y también veremos ahora que el contenido del &amp;lsquo;template&amp;rsquo; puede ser modificado mediante el concepto de &amp;lsquo;slot&amp;rsquo;.
+Los slot (espacio) se los declara dentro del template de la componente y son espacios que pueden ser redefinidos cuando definimos una componente en el HTML.
+Problema Crear una componente que muestre dos botones &amp;lsquo;confirmar&amp;rsquo;, &amp;lsquo;cancelar&amp;rsquo; y un hipervínculo.</description>
+    </item>
+    
+    <item>
+      <title>24 Componentes:slot-scope</title>
+      <link>http://example.org/12/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:13 -0500</pubDate>
+      
+      <guid>http://example.org/12/</guid>
+      <description>Hay otra variante de slot que nos permiten comunicar datos desde la componente a donde la definimos a la misma.
+Con esta variante podemos crear una componente que tenga una forma de mostrar datos por defecto, pero si se define un slot-scope luego la forma de mostrar los datos queda como responsabilidad fuera de la componente.
+Problema Crear una componente llamada &amp;lsquo;dias-semana&amp;rsquo;. Por defecto muestra los días uno al lado del otro separados por un guión.</description>
+    </item>
+    
+    <item>
+      <title>25 Componentes:eventos propios y captura en la instancia Vue</title>
+      <link>http://example.org/11/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:09 -0500</pubDate>
+      
+      <guid>http://example.org/11/</guid>
+      <description>Una parte muy importante es la posibilidad de emitir eventos en la componente y luego poderlos capturar en la instancia Vue.
+En la componente debemos llamar a $emit y pasar el nombre del evento que lo captura:
+this.$emit(nombre del evento) Veamos con un ejemplo como se codifican los eventos propios en una componente.
+Problema Crear una aplicación que muestre 3 componentes de la clase &amp;lsquo;selector-numerico&amp;rsquo;. En la instancia Vue mostrar la suma de los tres selectores numéricos.</description>
+    </item>
+    
+    <item>
+      <title>26 Componentes:anidamiento de componentes</title>
+      <link>http://example.org/10/</link>
+      <pubDate>Fri, 07 Aug 2020 20:28:04 -0500</pubDate>
+      
+      <guid>http://example.org/10/</guid>
+      <description>Hasta ahora hemos probado de definir componentes y que dependan directamente de la instancia Vue. Veremos que una componente puede definir en su &amp;lsquo;template&amp;rsquo; otras componentes.
+Problema Declarar dos componentes: &amp;lsquo;listado-articulos&amp;rsquo; e &amp;lsquo;item-articulo&amp;rsquo;. La componente &amp;lsquo;item-articulo&amp;rsquo; tiene por objetivo mostrar el código, descripción y precio de un único artículo.
+La componente &amp;lsquo;listado-articulos&amp;rsquo; debe definir en su template una instancia de la componente &amp;lsquo;item-articulo&amp;rsquo;. Es decir la componente padre es &amp;lsquo;listado-articulos&amp;rsquo; y la componente hija es &amp;lsquo;item-articulo&amp;rsquo;.</description>
+    </item>
+    
+    <item>
+      <title>27 Componentes: montaje dinamico</title>
+      <link>http://example.org/9/</link>
+      <pubDate>Fri, 07 Aug 2020 20:27:59 -0500</pubDate>
+      
+      <guid>http://example.org/9/</guid>
+      <description>En Vue podemos montar las componentes en forma dinámica, es decir que a partir de ciertos eventos mostrar una componente y ocultar otra.
+Si bien se puede con las directivas v-if y v-show mostrar y ocultar componentes hay otra forma de montar una determinada componente mediante la etiqueta component:
+&amp;lt;component v-bind:is=&amp;#34;nombre de la componente&amp;#34;&amp;gt;&amp;lt;/component&amp;gt; Problema Crear dos componentes llamadas &amp;lsquo;articulos&amp;rsquo; y &amp;lsquo;proveedores&amp;rsquo;. Luego en la interfaz visual mediante dos botones indicar cual de las dos componentes se debe ver en la página.</description>
+    </item>
+    
+    <item>
+      <title>28 Formato resumido de las directivas v-bind y v-on</title>
+      <link>http://example.org/8/</link>
+      <pubDate>Fri, 07 Aug 2020 20:27:56 -0500</pubDate>
+      
+      <guid>http://example.org/8/</guid>
+      <description>La directiva v-bind: y v-on: pueden resumirse o definir atajos.
+  La forma resumida de v-bind: es solo los dos puntos.
+  La forma resumida de v-on: es @click.
+  Problema   Mostrar una dirección web en un ancla rescatando del modelo la url. Disponer un botón que al ser presionado redirija a otra página.
+  Resolver el problema utilizando formato normal para las directivas y el formato resumido.</description>
+    </item>
+    
+    <item>
+      <title>29 Extension Vue Devtools para depuracion de aplicaciones</title>
+      <link>http://example.org/7/</link>
+      <pubDate>Fri, 07 Aug 2020 20:27:51 -0500</pubDate>
+      
+      <guid>http://example.org/7/</guid>
+      <description>Existe una extensión oficial de Vue.js que nos permite cuando estamos desarrollando una aplicación conocer los valores almacenados en el modelo.
+  Esta extensión nos facilita la depuración de nuestra aplicación Vue.
+  Debemos descargar la extensión Vue Devtools de aquí
+  Para el correcto funcionamiento de la extensión debemos ejecutar la aplicación importando el framework Vue.js no reducido:
+vue.js (versión de desarrollo) vue.min.js (versión definitiva con el menor tamaño pero no funciona Vue Devtools) Una vez instalada debemos abrir en el navegador las &amp;ldquo;Herramientas para desarrolladores (por ejemplo Chrome) y consultar el estado del modelo de la aplicación:</description>
+    </item>
+    
+    <item>
+      <title>30 Organización tradicional de archivos</title>
+      <link>http://example.org/6/</link>
+      <pubDate>Fri, 07 Aug 2020 20:27:47 -0500</pubDate>
+      
+      <guid>http://example.org/6/</guid>
+      <description>La forma tradicional de organizar el código cuando desarrollamos un sitio es:
+ Archivos HTML Archivos JS Archivos CSS  Ejemplo
+Crear una componente llamada &amp;lsquo;tarjeta&amp;rsquo; que permita mostrar un recuadro con un título y un cuerpo. Organizar todo el proyecto en los tres archivos clásicos.
+pagina1.html
+&amp;lt;!doctype html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Prueba Vue&amp;lt;/title&amp;gt;  &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1, shrink-to-fit=no&amp;#34;&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;estilos.css&amp;#34;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;aplicacion&amp;#34;&amp;gt; &amp;lt;tarjeta titulo=&amp;#34;Título de la tarjeta&amp;#34; ancho=&amp;#34;30%&amp;#34;&amp;gt; &amp;lt;p&amp;gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.</description>
+    </item>
+    
+    <item>
+      <title>31 Herramientas:Node.js</title>
+      <link>http://example.org/5/</link>
+      <pubDate>Fri, 07 Aug 2020 20:27:42 -0500</pubDate>
+      
+      <guid>http://example.org/5/</guid>
+      <description>La primer herramienta a instalar será Node.js, esto debido a que gran cantidad de programas para el desarrollo en Vue.js están implementadas en Node.
+Lo primero que haremos es descargar e instalar la última versión estable de Node.js:
+Una vez instalado Node.js desde la línea de comandos del mismo podemos comprobar su correcto funcionamiento averiguando su versión:</description>
+    </item>
+    
+    <item>
+      <title>32 Herramientas:Vue CLI</title>
+      <link>http://example.org/4/</link>
+      <pubDate>Fri, 07 Aug 2020 20:27:37 -0500</pubDate>
+      
+      <guid>http://example.org/4/</guid>
+      <description>Vue CLI (Command Line Interface - Interfaz de línea de comandos) es un programa desarrollado en Node.js para el desarrollo rápido de proyectos con Vue.js
+Vue CLI pretende ser la línea base de herramientas estándar para el ecosistema Vue.
+Esta herramienta automatiza desde la creación de todos los archivos necesarios hasta la configuración y actualización de dependencias.
+Instalación de Vue CLI Desde la línea de comandos de Node.js procedemos a instalarlo mediante el comando:</description>
+    </item>
+    
+    <item>
+      <title>33 Herramientas:webpack</title>
+      <link>http://example.org/3/</link>
+      <pubDate>Fri, 07 Aug 2020 20:27:30 -0500</pubDate>
+      
+      <guid>http://example.org/3/</guid>
+      <description>Vue propone implementar las componentes en un único archivo con extensión *.vue y cuyo contenido sea el template con el HTML de la componente, su lógica en Javascript con el framework Vue y la hoja de estilo.
+Los archivos *.vue no pueden ser interpretados por un navegador por lo que necesitamos un programa que los procese de tal forma que queden legibles para navegadores. Esta actividad la resolvemos utilizando webpack.</description>
+    </item>
+    
+    <item>
+      <title>34 Archivos.Vue(Single File Components)</title>
+      <link>http://example.org/2/</link>
+      <pubDate>Fri, 07 Aug 2020 20:27:25 -0500</pubDate>
+      
+      <guid>http://example.org/2/</guid>
+      <description>Hemos dicho en forma reiterada que Vue propone descomponer una aplicación en componentes.
+Utilizamos Vue CLI para facilitar tener el esqueleto básico de nuestra aplicación. Veremos en este concepto los pasos para crear una componente y consumirla desde la componente principal App.vue.
+Problema Crear una componente &amp;lsquo;CartaPoker.vue&amp;rsquo; y utilizar Vue CLI para crear el proyecto y almacenar la componente en un archivo *.vue
+ Creamos el proyecto utilizando Vue CLI:  vue init webpack-simple proyecto003 Descendemos a la carpeta proyecto003 y procedemos a instalar todos los archivos de dependencias de nuestro proyecto:  cd proyecto003 npm install Procederemos a borrar de la plantilla que genera Vue CLI todo lo que no necesitamos.</description>
+    </item>
+    
+    <item>
+      <title>35 Instalar Librerias externas a un proyecto empleando Vue CLI</title>
+      <link>http://example.org/1/</link>
+      <pubDate>Fri, 07 Aug 2020 20:27:11 -0500</pubDate>
+      
+      <guid>http://example.org/1/</guid>
+      <description>Vimos en conceptos anteriores antes de comenzar con Vue CLI que cuando necesitamos hacer ciertas actividades como por ejemplo peticiones Ajax, el core de Vue.js no tiene dichas funcionalidades.
+Cuando utilizamos Vue CLI no hace falta utilizar la etiqueta script para importar las librerías desde un CDN o de un archivo local.
+Lo hacemos con la sintaxis:
+import Vue from &amp;#39;vue&amp;#39; Esa es la línea donde se importa el core del framework de Vue.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>30 Organización tradicional de archivos &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:27:47 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">30 Organización tradicional de archivos</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>La forma tradicional de organizar el código cuando desarrollamos un sitio es:</p>
+<ul>
+<li>Archivos HTML</li>
+<li>Archivos JS</li>
+<li>Archivos CSS</li>
+</ul>
+<p>Ejemplo</p>
+<p>Crear una componente llamada &lsquo;tarjeta&rsquo; que permita mostrar un recuadro con un título y un cuerpo. Organizar todo el proyecto en los tres archivos clásicos.</p>
+<p>pagina1.html</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;!</span><span style="color:#a6e22e">doctype</span> <span style="color:#a6e22e">html</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">html</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">head</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">title</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Prueba</span> <span style="color:#a6e22e">Vue</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/title&gt; </span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;estilos.css&#34;</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/head&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">body</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">tarjeta</span> <span style="color:#a6e22e">titulo</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Título de la tarjeta&#34;</span> <span style="color:#a6e22e">ancho</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;30%&#34;</span><span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">p</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Lorem</span> <span style="color:#a6e22e">ipsum</span> <span style="color:#a6e22e">dolor</span> <span style="color:#a6e22e">sit</span> <span style="color:#a6e22e">amet</span>, <span style="color:#a6e22e">consectetur</span> <span style="color:#a6e22e">adipiscing</span> <span style="color:#a6e22e">elit</span>. <span style="color:#a6e22e">Etiam</span> <span style="color:#a6e22e">lectus</span> <span style="color:#a6e22e">sem</span>, 
+        <span style="color:#a6e22e">tempor</span> <span style="color:#a6e22e">vitae</span> <span style="color:#a6e22e">mattis</span> <span style="color:#a6e22e">malesuada</span>, <span style="color:#a6e22e">ornare</span> <span style="color:#a6e22e">sed</span> <span style="color:#a6e22e">erat</span>. <span style="color:#a6e22e">Pellentesque</span> <span style="color:#a6e22e">nulla</span> <span style="color:#a6e22e">dui</span>, <span style="color:#a6e22e">congue</span>
+        <span style="color:#a6e22e">nec</span> <span style="color:#a6e22e">tortor</span> <span style="color:#a6e22e">sit</span> <span style="color:#a6e22e">amet</span>, <span style="color:#a6e22e">maximus</span> <span style="color:#a6e22e">mattis</span> <span style="color:#a6e22e">dui</span>.<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/p&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/tarjeta&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;</span>
+
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rutinas.js&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/body&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/html&gt;</span>
+</code></pre></div><h1 id="rutinasjs">rutinas.js</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;tarjeta&#39;</span>,{
+  <span style="color:#a6e22e">props</span><span style="color:#f92672">:</span>[<span style="color:#e6db74">&#39;titulo&#39;</span>,<span style="color:#e6db74">&#39;ancho&#39;</span>],
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">    &lt;div v-bind:style=&#34;{&#39;width&#39;:ancho}&#34; class=&#34;tarjeta&#34;&gt;
+</span><span style="color:#e6db74">      &lt;h1 class=&#34;titulo-tarjeta&#34;&gt;{{titulo}}&lt;/h1&gt;
+</span><span style="color:#e6db74">      &lt;slot&gt;Cuerpo tarjeta&lt;/slot&gt;
+</span><span style="color:#e6db74">    &lt;/div&gt;
+</span><span style="color:#e6db74">  `</span>
+})
+
+<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;#aplicacion&#39;</span>
+})
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">estilos</span>.<span style="color:#a6e22e">css</span>
+.<span style="color:#a6e22e">tarjeta</span> {
+  <span style="color:#a6e22e">box</span><span style="color:#f92672">-</span><span style="color:#a6e22e">shadow</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">4</span><span style="color:#a6e22e">px</span> <span style="color:#ae81ff">10</span><span style="color:#a6e22e">px</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">rgba</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.2</span>),<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">4</span><span style="color:#a6e22e">px</span> <span style="color:#ae81ff">20</span><span style="color:#a6e22e">px</span> <span style="color:#ae81ff">0</span> <span style="color:#a6e22e">rgba</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0.19</span>);
+  <span style="color:#a6e22e">background</span><span style="color:#f92672">-</span><span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">dcdcdc</span>;  
+}
+
+.<span style="color:#a6e22e">titulo</span><span style="color:#f92672">-</span><span style="color:#a6e22e">tarjeta</span> {
+  <span style="color:#a6e22e">background</span><span style="color:#f92672">-</span><span style="color:#a6e22e">color</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">2196</span><span style="color:#a6e22e">F3</span>;
+  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span><span style="color:#a6e22e">white</span>;
+}
+</code></pre></div><p>Esta forma de encarar un proyecto es perfectamente válido si el mismo es de tamaño pequeño o mediano.</p>
+<p>Hemos dicho que Vue.js es un framework progresivo, esto significa que podemos trabajar administrando y organizando los archivos a nuestra necesidad, pero si queremos desarrollar un proyecto grande en Vue donde participen muchos desarrolladores, Vue nos provee una serie de herramientas y metodologías específicas para construirlo.</p>
+<p>A partir del próximo concepto empezaremos a trabajar con Vue utilizando estas herramientas.</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/5/" class="left arrow">&#8592;</a>
+		<a href="/7/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2958156 -0500 -05 m=&#43;1.372617601">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

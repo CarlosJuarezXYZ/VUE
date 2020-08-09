@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>26 Componentes:anidamiento de componentes &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:28:04 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">26 Componentes:anidamiento de componentes</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Hasta ahora hemos probado de definir componentes y que dependan directamente de la instancia Vue. Veremos que una componente puede definir en su &lsquo;template&rsquo; otras componentes.</p>
+<h1 id="problema">Problema</h1>
+<p>Declarar dos componentes: &lsquo;listado-articulos&rsquo; e &lsquo;item-articulo&rsquo;. La componente &lsquo;item-articulo&rsquo; tiene por objetivo mostrar el código, descripción y precio de un único artículo.</p>
+<p>La componente &lsquo;listado-articulos&rsquo; debe definir en su template una instancia de la componente &lsquo;item-articulo&rsquo;. Es decir la componente padre es &lsquo;listado-articulos&rsquo; y la componente hija es &lsquo;item-articulo&rsquo;.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+    &lt;<span style="color:#f92672">listado-articulos</span> <span style="color:#a6e22e">v-bind:articulos</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;articulos&#34;</span>&gt;&lt;/<span style="color:#f92672">listado-articulos</span>&gt;    
+  &lt;/<span style="color:#f92672">div</span>&gt;
+
+  &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;   
+  &lt;<span style="color:#f92672">script</span>&gt;
+
+  <span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;listado-articulos&#39;</span>, {
+    <span style="color:#a6e22e">props</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;articulos&#39;</span>],
+    <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`&lt;div&gt;
+</span><span style="color:#e6db74">                 &lt;item-articulo v-for=&#34;art in articulos&#34; v-bind:articulo=&#34;art&#34;&gt;&lt;/item-articulo&gt;
+</span><span style="color:#e6db74">               &lt;/div&gt;`</span>
+  })    
+
+  <span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;item-articulo&#39;</span>, {
+    <span style="color:#a6e22e">props</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;articulo&#39;</span>],
+    <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`&lt;div&gt;
+</span><span style="color:#e6db74">                 &lt;p&gt;Código:{{articulo.codigo}}&lt;/p&gt;
+</span><span style="color:#e6db74">                 &lt;p&gt;Descripción:{{articulo.descripcion}}&lt;/p&gt;
+</span><span style="color:#e6db74">                 &lt;p&gt;Precio:{{articulo.precio}}&lt;/p&gt;&lt;hr&gt;
+</span><span style="color:#e6db74">               &lt;/div&gt;`</span>
+  })
+
+
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+    <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+    <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+      <span style="color:#a6e22e">articulos</span><span style="color:#f92672">:</span> [{
+                    <span style="color:#a6e22e">codigo</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, 
+                    <span style="color:#a6e22e">descripcion</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;papas&#39;</span>,
+                    <span style="color:#a6e22e">precio</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">12.52</span>
+                  },{
+                    <span style="color:#a6e22e">codigo</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, 
+                    <span style="color:#a6e22e">descripcion</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;naranjas&#39;</span>,
+                    <span style="color:#a6e22e">precio</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">21</span>
+                  },{
+                    <span style="color:#a6e22e">codigo</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>, 
+                    <span style="color:#a6e22e">descripcion</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;peras&#39;</span>,
+                    <span style="color:#a6e22e">precio</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">18.20</span>
+                  }]
+
+    }
+  })
+  &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><p>Código:1</p>
+<p>Descripción:papas</p>
+<p>Precio:12.52</p>
+<p>Código:2</p>
+<p>Descripción:naranjas</p>
+<p>Precio:21</p>
+<p>Código:3</p>
+<p>Descripción:peras</p>
+<p>Precio:18.2</p>
+<p>La componente &lsquo;listado-articulos&rsquo; recibe en la propiedad &lsquo;articulos&rsquo; el objeto con todo los artículos a mostrar. Luego en el template definimos una etiqueta &lsquo;item-articulo&rsquo; y mediante una directiva v-for recorremos el objeto de articulos:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+  <span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;listado-articulos&#39;</span>, {
+    <span style="color:#a6e22e">props</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;articulos&#39;</span>],
+    <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`&lt;div&gt;
+</span><span style="color:#e6db74">                 &lt;item-articulo v-for=&#34;art in articulos&#34; v-bind:articulo=&#34;art&#34;&gt;&lt;/item-articulo&gt;
+</span><span style="color:#e6db74">               &lt;/div&gt;`</span>
+  })  
+
+</code></pre></div><p>La componente &lsquo;item-articulo&rsquo; recibe en la propiedad &lsquo;articulo&rsquo; un objeto con un artículo en particular, luego en el template mostramos dicho artículo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;item-articulo&#39;</span>, {
+    <span style="color:#a6e22e">props</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;articulo&#39;</span>],
+    <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`&lt;div&gt;
+</span><span style="color:#e6db74">                 &lt;p&gt;Código:{{articulo.codigo}}&lt;/p&gt;
+</span><span style="color:#e6db74">                 &lt;p&gt;Descripción:{{articulo.descripcion}}&lt;/p&gt;
+</span><span style="color:#e6db74">                 &lt;p&gt;Precio:{{articulo.precio}}&lt;/p&gt;&lt;hr&gt;
+</span><span style="color:#e6db74">               &lt;/div&gt;`</span>
+  })
+
+</code></pre></div>
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/9/" class="left arrow">&#8592;</a>
+		<a href="/11/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2095339 -0500 -05 m=&#43;1.286335901">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

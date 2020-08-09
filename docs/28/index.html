@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>8 Eventos: v-on:submit &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:29:15 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">8 Eventos: v-on:submit</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Un evento muy usado es cuando se presiona un control de tipo input (submit) que por defecto toma todos los datos del formulario y los envía a nuestro servidor web.</p>
+<p>Veremos como podemos prevenir el envío y ejecutar algún algoritmo en Javascript mediante Vue.</p>
+<h1 id="problema">Problema</h1>
+<p>Almacenar en un arreglo códigos de artículos, sus descripciones y precios. Mostrar en una tabla HTML los datos y mediante un formulario HTML permitir ingresar nuevos datos en el arreglo.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+    &lt;<span style="color:#f92672">table</span> <span style="color:#a6e22e">border</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span>&gt;
+      &lt;<span style="color:#f92672">tr</span>&gt;&lt;<span style="color:#f92672">td</span>&gt;Código&lt;/<span style="color:#f92672">td</span>&gt;&lt;<span style="color:#f92672">td</span>&gt;Descripción&lt;/<span style="color:#f92672">td</span>&gt;&lt;<span style="color:#f92672">td</span>&gt;Precio&lt;/<span style="color:#f92672">td</span>&gt;&lt;/<span style="color:#f92672">tr</span>&gt;
+      &lt;<span style="color:#f92672">template</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;articulo in articulos&#34;</span>&gt;
+      &lt;<span style="color:#f92672">tr</span>&gt;
+        &lt;<span style="color:#f92672">td</span>&gt;{{articulo.codigo}}&lt;/<span style="color:#f92672">td</span>&gt;
+        &lt;<span style="color:#f92672">td</span>&gt;{{articulo.descripcion}}&lt;/<span style="color:#f92672">td</span>&gt;
+        &lt;<span style="color:#f92672">td</span>&gt;{{articulo.precio}}&lt;/<span style="color:#f92672">td</span>&gt;
+      &lt;/<span style="color:#f92672">tr</span>&gt;
+    &lt;/<span style="color:#f92672">template</span>&gt;
+    &lt;/<span style="color:#f92672">table</span>&gt;    
+    &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">v-on:submit</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">prevent</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;agregarArticulo&#34;</span>&gt;
+      &lt;<span style="color:#f92672">p</span>&gt;
+        Ingrese código:&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;number&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;codigo&#34;</span>&gt;
+      &lt;/<span style="color:#f92672">p</span>&gt;
+      &lt;<span style="color:#f92672">p</span>&gt;
+        Ingrese descripción:&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;descripcion&#34;</span>&gt;
+      &lt;/<span style="color:#f92672">p</span>&gt;
+      &lt;<span style="color:#f92672">p</span>&gt;
+        Ingrese precio:&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;precio&#34;</span>&gt;
+      &lt;/<span style="color:#f92672">p</span>&gt;
+      &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Agregar&#34;</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;
+    &lt;/<span style="color:#f92672">form</span>&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+
+  &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+  &lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+      <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">codigo</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+        <span style="color:#a6e22e">descripcion</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+        <span style="color:#a6e22e">precio</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+        <span style="color:#a6e22e">articulos</span><span style="color:#f92672">:</span> [{
+          <span style="color:#a6e22e">codigo</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,
+          <span style="color:#a6e22e">descripcion</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;papas&#39;</span>,
+          <span style="color:#a6e22e">precio</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">34</span>
+        }]
+      },
+      <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">agregarArticulo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">articulos</span>.<span style="color:#a6e22e">push</span>({
+                                <span style="color:#a6e22e">codigo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">codigo</span>,
+                                <span style="color:#a6e22e">descripcion</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">descripcion</span>,
+                                <span style="color:#a6e22e">precio</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">precio</span>
+                              });
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">codigo</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">descripcion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">precio</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+        }
+      }
+    })
+  &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><table>
+<thead>
+<tr>
+<th>Codigo</th>
+<th>Descripción</th>
+<th>Precio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>papas</td>
+<td>34</td>
+</tr>
+</tbody>
+</table>
+<p>Ingrese codigo : <code>       </code></p>
+<p>Ingrese descripción : <code>     </code></p>
+<p>Ingrese precio : <code>      </code></p>
+<p><code>Enviar</code></p>
+<p>La tabla HTML donde se muestran los datos aparece con una fila de datos debido a que el arreglo lo definimos con una componente:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+        <span style="color:#a6e22e">articulos</span><span style="color:#f92672">:</span> [{
+          <span style="color:#a6e22e">codigo</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,
+          <span style="color:#a6e22e">descripcion</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;papas&#39;</span>,
+          <span style="color:#a6e22e">precio</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">34</span>
+        }]
+</code></pre></div><p>Luego en la vista mediante la directiva v-for mostramos el contenido del arreglo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+    &lt;<span style="color:#f92672">table</span> <span style="color:#a6e22e">border</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span>&gt;
+      &lt;<span style="color:#f92672">tr</span>&gt;&lt;<span style="color:#f92672">td</span>&gt;Código&lt;/<span style="color:#f92672">td</span>&gt;&lt;<span style="color:#f92672">td</span>&gt;Descripción&lt;/<span style="color:#f92672">td</span>&gt;&lt;<span style="color:#f92672">td</span>&gt;Precio&lt;/<span style="color:#f92672">td</span>&gt;&lt;/<span style="color:#f92672">tr</span>&gt;
+      &lt;<span style="color:#f92672">template</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;articulo in articulos&#34;</span>&gt;
+      &lt;<span style="color:#f92672">tr</span>&gt;
+        &lt;<span style="color:#f92672">td</span>&gt;{{articulo.codigo}}&lt;/<span style="color:#f92672">td</span>&gt;
+        &lt;<span style="color:#f92672">td</span>&gt;{{articulo.descripcion}}&lt;/<span style="color:#f92672">td</span>&gt;
+        &lt;<span style="color:#f92672">td</span>&gt;{{articulo.precio}}&lt;/<span style="color:#f92672">td</span>&gt;
+      &lt;/<span style="color:#f92672">tr</span>&gt;
+    &lt;/<span style="color:#f92672">template</span>&gt;
+    &lt;/<span style="color:#f92672">table</span>&gt;    
+
+</code></pre></div><p>Para prevenir que cuando se presione el botón de tipo submit se recargue la página debemos capturar el evento v-on:submit.prevent:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">v-on:submit</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">prevent</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;agregarArticulo&#34;</span>&gt;
+</code></pre></div><p>Con v-on:submit capturamos el evento pero no prevenimos que se envíen los datos al servidor y por lo tanto se recargue la página.</p>
+<p>Para agregar un elemento a nuestro arreglo hemos llamado al método &ldquo;agregarArticulo&rdquo; cuyo algoritmo crea un objeto y lo añade al arreglo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+        <span style="color:#a6e22e">agregarArticulo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">articulos</span>.<span style="color:#a6e22e">push</span>({
+                                <span style="color:#a6e22e">codigo</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">codigo</span>,
+                                <span style="color:#a6e22e">descripcion</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">descripcion</span>,
+                                <span style="color:#a6e22e">precio</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">precio</span>
+                              });
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">codigo</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">descripcion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">precio</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+        }
+        
+</code></pre></div><p>Además borramos el contenido de los tres controles de tipo input modificando las propiedades del modelo. Recordemos que tenemos una asociación bidireccional entre la vista y el modelo, cualquier cambio en el modelo de datos se actualiza inmediatamente en la vista como vemos que sucede al agregar elementos al vector o borrar los contenidos de codigo, descripcion y precio.</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/27/" class="left arrow">&#8592;</a>
+		<a href="/29/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2658961 -0500 -05 m=&#43;1.342698101">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

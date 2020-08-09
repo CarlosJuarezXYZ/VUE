@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>7 Eventos:v-on:keypress,v-on:keyup &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:29:19 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">7 Eventos:v-on:keypress,v-on:keyup</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Veamos como se captura cuando se presiona una tecla y cuando se la suelta. Para esto tenemos los eventos v-on:keypress que se dispara cuando el operador presiona una tecla y v-on:keyup cuando suelta la tecla.</p>
+<p>Debemos definir que etiqueta HTML capturará el evento de presión de tecla.</p>
+<h1 id="problema">Problema</h1>
+<p>Mostrar en una lista ordenada una serie de actividades a realizar. Asociar dichas actividades a un vector en el modelo.
+Mediante un control de tipo input (text) permitir ingresar nuevas actividades y al presionar la tecla enter actualizar la lista ordenada con la nueva actividad.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+    &lt;<span style="color:#f92672">h1</span>&gt;Listado de actividades&lt;/<span style="color:#f92672">h1</span>&gt;
+    &lt;<span style="color:#f92672">ol</span>&gt;
+      &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;actividad in actividades&#34;</span>&gt;
+        {{actividad}}
+      &lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;/<span style="color:#f92672">ol</span>&gt;
+    Nueva actividad:&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">v-on:keyup</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">enter</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;actualizarLista&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;actividad&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Enter para confirmar&#34;</span>&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+
+  &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+  &lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+      <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">actividad</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+        <span style="color:#a6e22e">actividades</span><span style="color:#f92672">:</span> []
+      },
+      <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">actualizarLista</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">actividades</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">actividad</span>);
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">actividad</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+        }
+      }
+    })
+  &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><h1 id="listado-de-actividades">Listado de Actividades</h1>
+<p>Nueva Actividad: <code>enter para confirmar</code></p>
+<p>En el modelo de datos hemos definido dos propiedades una llamada &lsquo;actividad&rsquo;:</p>
+<pre><code>     actividad: ' ',
+</code></pre>
+<p>La propiedad &lsquo;actividad&rsquo; la asociamos con el control input mediante la directiva v-model donde el operador carga por teclado la actividad:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+    <span style="color:#a6e22e">Nueva</span> <span style="color:#a6e22e">actividad</span><span style="color:#f92672">:&lt;</span><span style="color:#a6e22e">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">v</span><span style="color:#f92672">-</span><span style="color:#a6e22e">on</span><span style="color:#f92672">:</span><span style="color:#a6e22e">keyup</span>.<span style="color:#a6e22e">enter</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;actualizarLista&#34;</span> 
+    <span style="color:#a6e22e">v</span><span style="color:#f92672">-</span><span style="color:#a6e22e">model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;actividad&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Enter para confirmar&#34;</span><span style="color:#f92672">&gt;</span>
+</code></pre></div><p>Como vemos en el control input definimos una segunda directiva v-on:keyup.enter que se ejecuta cuando el operador suelta una tecla y dicha tecla es la tecla enter (también podemos escribir v-on:keyup.13 que es el caracter asscii de dicha tecla)</p>
+<p>Por otro lado tenemos en el modelo de datos un vector vacío donde se guardarán las actividades:</p>
+<pre><code>    actividades: []
+</code></pre>
+<p>Cuando se presiona la tecla &ldquo;Enter&rdquo; se ejecuta el método &ldquo;actualizarLista&rdquo;:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+        <span style="color:#a6e22e">actualizarLista</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">actividades</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">actividad</span>);
+          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">actividad</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+        }
+
+</code></pre></div><p>Como podemos comprobar en este método solo agregamos al vector actividades mediante el método push de Javascript el texto que hay en el control input. Solo gracias a Vue se actualiza la lista ordenada de HTML con las actividades del arreglo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#f92672">ol</span>&gt;
+      &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;actividad in actividades&#34;</span>&gt;
+        {{actividad}}
+      &lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;/<span style="color:#f92672">ol</span>&gt;
+</code></pre></div><p>Es importante ver lo concisa que es nuestra aplicación que añade actividades a una lista utilizando el framework Vue.</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/28/" class="left arrow">&#8592;</a>
+		<a href="/30/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2639008 -0500 -05 m=&#43;1.340702801">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

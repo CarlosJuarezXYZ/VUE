@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>32 Herramientas:Vue CLI &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:27:37 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">32 Herramientas:Vue CLI</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Vue CLI (Command Line Interface - Interfaz de línea de comandos) es un programa desarrollado en Node.js para el desarrollo rápido de proyectos con Vue.js</p>
+<p>Vue CLI pretende ser la línea base de herramientas estándar para el ecosistema Vue.</p>
+<p>Esta herramienta automatiza desde la creación de todos los archivos necesarios hasta la configuración y actualización de dependencias.</p>
+<h1 id="instalación-de-vue-cli">Instalación de Vue CLI</h1>
+<p>Desde la línea de comandos de Node.js procedemos a instalarlo mediante el comando:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">npm</span> <span style="color:#a6e22e">install</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">g</span> <span style="color:#a6e22e">vue</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cli</span>
+</code></pre></div><p>La opción -g indica que el paquete vue-cli sea instalado en forma global.</p>
+<p><img src="https://www.tutorialesprogramacionya.com/vueya/imagentema/foto007.jpg" alt=""></p>
+<p>Para probar el correcto funcionamiento crearemos un proyecto con vue-cli utilizando la plantilla simple, con esta plantilla nos genera un proyecto para trabajar como lo veníamos haciendo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">vue</span> <span style="color:#a6e22e">init</span> <span style="color:#a6e22e">simple</span> <span style="color:#a6e22e">proyecto001</span>
+</code></pre></div><p><img src="https://www.tutorialesprogramacionya.com/vueya/imagentema/foto008.jpg" alt=""></p>
+<p>Luego de ejecutar este comando se ha creado una carpeta llamada &lsquo;proyecto001&rsquo; y dentro de la misma el archivo &lsquo;index.html&rsquo;:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Welcome to Vue&lt;/<span style="color:#f92672">title</span>&gt;
+  &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://unpkg.com/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;
+    &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://vuejs.org/images/logo.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Vue logo&#34;</span>&gt;
+    &lt;<span style="color:#f92672">h1</span>&gt;{{ greeting }}&lt;/<span style="color:#f92672">h1</span>&gt;
+    &lt;<span style="color:#f92672">ul</span>&gt;
+      &lt;<span style="color:#f92672">li</span>&gt;
+        To learn more about Vue, visit
+        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">:href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;docsURL&#34;</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span>&gt;
+          {{ humanizeURL(docsURL) }}
+        &lt;/<span style="color:#f92672">a</span>&gt;
+      &lt;/<span style="color:#f92672">li</span>&gt;
+      &lt;<span style="color:#f92672">li</span>&gt;
+        For live help with simple questions, check out
+        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">:href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;discordURL&#34;</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span>&gt;
+          the Discord chat
+        &lt;/<span style="color:#f92672">a</span>&gt;
+      &lt;/<span style="color:#f92672">li</span>&gt;
+      &lt;<span style="color:#f92672">li</span>&gt;
+        For more complex questions, post to
+        &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">:href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;forumURL&#34;</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span>&gt;
+          the forum
+        &lt;/<span style="color:#f92672">a</span>&gt;
+      &lt;/<span style="color:#f92672">li</span>&gt;
+    &lt;/<span style="color:#f92672">ul</span>&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+
+  &lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+      <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#app&#39;</span>,
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">greeting</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Welcome to your Vue.js app!&#39;</span>,
+        <span style="color:#a6e22e">docsURL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;http://vuejs.org/guide/&#39;</span>,
+        <span style="color:#a6e22e">discordURL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://chat.vuejs.org&#39;</span>,
+        <span style="color:#a6e22e">forumURL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;http://forum.vuejs.org/&#39;</span>
+      },
+      <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">humanizeURL</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">url</span>) {
+          <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">url</span>
+            .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/^https?:\/\//</span>, <span style="color:#e6db74">&#39;&#39;</span>)
+            .<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\/$/</span>, <span style="color:#e6db74">&#39;&#39;</span>)
+        }
+      }
+    })
+  &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><p>Como vemos se genera un mínimo programa en Vue.js, a partir de aquí lo modificamos a nuestra necesidad:</p>
+<p><img src="https://vuejs.org/images/logo.png" alt=""></p>
+<h1 id="welcome-to-your-vuejs-app">Welcome to your Vue.js app!</h1>
+<ul>
+<li>To learn more about Vue, visit vuejs.org/guide</li>
+<li>For live help with simple questions, check out the Discord chat</li>
+<li>For more complex questions, post to the forum</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/3/" class="left arrow">&#8592;</a>
+		<a href="/5/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.289832 -0500 -05 m=&#43;1.366634001">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

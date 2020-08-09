@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>19 Componentes Propiedades  &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:28:33 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">19 Componentes Propiedades </h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Vimos en el concepto anterior que una característica fundamental de Vue es la posibilidad de definir componentes y ser reutilizadas.</p>
+<p>Una componente puede definir propiedades y pasarle valores a las mismas cuando definimos etiquetas:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+&lt;<span style="color:#f92672">hola-mundo</span> <span style="color:#a6e22e">idioma</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ingles&#34;</span>&gt;&lt;/<span style="color:#f92672">hola-mundo</span>&gt;
+
+</code></pre></div><p>En la etiqueta &lsquo;hola-mundo&rsquo; pasamos la propiedad &lsquo;idioma&rsquo; con el valor &lsquo;ingles&rsquo;. Esto es lo que ya usamos en HTML para informar a la etiqueta valores que debe tener en cuenta.</p>
+<p>Veamos ahora como una componente en Vue define y almacena el valor de la propiedad:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+    &lt;<span style="color:#f92672">hola-mundo</span> <span style="color:#a6e22e">idioma</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ingles&#34;</span>&gt;&lt;/<span style="color:#f92672">hola-mundo</span>&gt;
+    &lt;<span style="color:#f92672">hola-mundo</span> <span style="color:#a6e22e">idioma</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;castellano&#34;</span>&gt;&lt;/<span style="color:#f92672">hola-mundo</span>&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+ 
+&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;hola-mundo&#39;</span>, {
+    <span style="color:#a6e22e">props</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;idioma&#39;</span>],
+    <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`&lt;div&gt;
+</span><span style="color:#e6db74">                  &lt;p v-if=&#34;idioma==&#39;castellano&#39;&#34;&gt;Hola mundo&lt;/p&gt;
+</span><span style="color:#e6db74">                  &lt;p v-if=&#34;idioma==&#39;ingles&#39;&#34;&gt;Hello world&lt;/p&gt;
+</span><span style="color:#e6db74">              &lt;/div&gt;`</span>
+  })
+
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+    <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>
+  })
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><p>Cuando declaramos una componente debemos definir una propiedad llamada &lsquo;props&rsquo; y dentro de la misma un vector con todas las propiedades de dicha componente:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;hola-mundo&#39;</span>, {
+    <span style="color:#a6e22e">props</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;idioma&#39;</span>],
+</code></pre></div><p>Luego en el template podemos analizar el valor almacenado en la propiedad y para nuestro ejemplo mostrar el mensaje en castellano o ingles:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    template: `&lt;<span style="color:#f92672">div</span>&gt;
+                  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">v-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;idioma==&#39;castellano&#39;&#34;</span>&gt;Hola mundo&lt;/<span style="color:#f92672">p</span>&gt;
+                  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">v-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;idioma==&#39;ingles&#39;&#34;</span>&gt;Hello world&lt;/<span style="color:#f92672">p</span>&gt;
+              &lt;/<span style="color:#f92672">div</span>&gt;`
+</code></pre></div><p>Recordar que siempre una componente en Vue debe tener un elemento HTML que englobe todos los otros (en nuestro ejemplo el div)</p>
+<p>El resultado de ejecutar esta página es:</p>
+<pre><code>Hello world
+
+Hola mundo
+
+</code></pre>
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/16/" class="left arrow">&#8592;</a>
+		<a href="/18/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2240079 -0500 -05 m=&#43;1.300809901">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

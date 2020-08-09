@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>2 Directivas en Vue &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:29:42 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">2 Directivas en Vue</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Una directiva es un atributo de un elemento HTML que luego va a interpretar el framework Vue.</p>
+<p>Las directivas siempre comienzan con los caracteres &ldquo;v-&rdquo; y son ejemplos de directivas:</p>
+<ul>
+<li>v-bind</li>
+<li>v-model</li>
+<li>v-if</li>
+<li>v-else</li>
+<li>v-for</li>
+</ul>
+<p>Existen muchas más pero nombramos estas que serán las que primero utilizaremos.</p>
+<p>Veamos como se define una directiva en un elemento HTML:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nombre&#34;</span>&gt;
+
+</code></pre></div><p>La directiva v-model asocia el dato que se ingresa en el control &ldquo;input&rdquo; con un atributo del modelo de datos que debe definirse luego en Javascript:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+      <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">nombre</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>
+      }
+    })
+</code></pre></div><p>El atributo &ldquo;data&rdquo; tiene un atributo llamado &ldquo;nombre&rdquo; que coincide con el valor almacenado en la directiva v-model. Esta directiva asocia en forma bidireccional la parte visual (nuestro control input) y nuestro modelo de datos.</p>
+<p>Cualquier cambio que produzca el usuario ingresando información en el control input luego se refleja en el atributo &ldquo;nombre&rdquo; del objeto Vue. Lo mismo sucede con cualquier cambio que se provoque en el atributo &ldquo;nombre&rdquo; luego se refleja en el control input.</p>
+<p>Si disponemos un valor inicial en el atributo nombre luego se refleja en el input:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+      <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">nombre</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Juan&#39;</span>
+      }
+    })
+</code></pre></div><p>La página completa de este problema es:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+    Ingrese su nombre:
+    &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nombre&#34;</span>&gt;
+    &lt;<span style="color:#f92672">p</span>&gt;{{nombre}}&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+  
+  &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;   
+
+  &lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+      <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">nombre</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>
+      }
+    })
+  &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+</code></pre></div><p>Ingrese su nombre : <code>               </code></p>
+<p>Para ver este cambio en tiempo real hemos dispuesto en la vista que se muestre el valor de la propiedad &ldquo;nombre&rdquo; del modelo de datos:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#f92672">p</span>&gt;{{nombre}}&lt;/<span style="color:#f92672">p</span>&gt;
+</code></pre></div><p>Ahora cuando ejecutamos la página al ingresar un caracter en el control HTML input inmediatamente Vue detecta dicho caracter y lo almacena en el atributo &ldquo;nombre&rdquo;, pero también actualiza la vista donde hemos dispuesto {{nombre}}.</p>
+<p>Todo el proceso de comunicación bidireccional lo hace el framework Vue en forma transparente para nosotros.</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/33/" class="left arrow">&#8592;</a>
+		<a href="/35/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2808559 -0500 -05 m=&#43;1.357657901">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

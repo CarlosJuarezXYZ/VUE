@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+	<meta name="generator" content="Hugo 0.74.3" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="">
+
+		<title>VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="/index.xml" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	
+
+
+	<div class="catalogue">
+		
+			<a href="http://example.org/15/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:24 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">21 Componentes:definición de métodos y modelo de datos</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Igual que las instancias de la clase Vue, las componentes pueden tener una propiedad methods y data.
+En la propiedad methods definimos todas las funciones y en la propiedad data a diferencia de la instancia Vue debemos plantear una función que retorne un objeto literal con todos los atributos de la componente (es importante recordar que la mecánica es distinta a los objetos Vue)
+Problema Plantear una componente llamada &lsquo;selector-numerico&rsquo; con tres propiedades &lsquo;valor&rsquo;,&lsquo;minimo&rsquo; y &lsquo;maximo&rsquo;.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/14/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:20 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">22 Componentes:ubicación del valor de la propiedad template</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Hasta ahora hemos visto que toda componente debe definir la propiedad &lsquo;template&rsquo; con los elementos HTML que representan la interfaz visual de la misma.
+Normalmente como dicho valor requiere varias líneas lo más común es utilizar las comillas oblicuas ..... que nos permiten crear string de varias líneas.
+Si tenemos una componente que requiere un template muy largo la metodología de definir el valor del template directamente luego de la propiedad puede ser un poco engorroso.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/13/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:16 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">23 Componentes:slot</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            La interfaz de una componente la podemos transformar mediante datos que le enviamos a sus propiedades y también veremos ahora que el contenido del &lsquo;template&rsquo; puede ser modificado mediante el concepto de &lsquo;slot&rsquo;.
+Los slot (espacio) se los declara dentro del template de la componente y son espacios que pueden ser redefinidos cuando definimos una componente en el HTML.
+Problema Crear una componente que muestre dos botones &lsquo;confirmar&rsquo;, &lsquo;cancelar&rsquo; y un hipervínculo.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/12/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:13 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">24 Componentes:slot-scope</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Hay otra variante de slot que nos permiten comunicar datos desde la componente a donde la definimos a la misma.
+Con esta variante podemos crear una componente que tenga una forma de mostrar datos por defecto, pero si se define un slot-scope luego la forma de mostrar los datos queda como responsabilidad fuera de la componente.
+Problema Crear una componente llamada &lsquo;dias-semana&rsquo;. Por defecto muestra los días uno al lado del otro separados por un guión.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/11/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:09 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">25 Componentes:eventos propios y captura en la instancia Vue</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Una parte muy importante es la posibilidad de emitir eventos en la componente y luego poderlos capturar en la instancia Vue.
+En la componente debemos llamar a $emit y pasar el nombre del evento que lo captura:
+this.$emit(nombre del evento) Veamos con un ejemplo como se codifican los eventos propios en una componente.
+Problema Crear una aplicación que muestre 3 componentes de la clase &lsquo;selector-numerico&rsquo;. En la instancia Vue mostrar la suma de los tres selectores numéricos.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/10/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:28:04 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">26 Componentes:anidamiento de componentes</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Hasta ahora hemos probado de definir componentes y que dependan directamente de la instancia Vue. Veremos que una componente puede definir en su &lsquo;template&rsquo; otras componentes.
+Problema Declarar dos componentes: &lsquo;listado-articulos&rsquo; e &lsquo;item-articulo&rsquo;. La componente &lsquo;item-articulo&rsquo; tiene por objetivo mostrar el código, descripción y precio de un único artículo.
+La componente &lsquo;listado-articulos&rsquo; debe definir en su template una instancia de la componente &lsquo;item-articulo&rsquo;. Es decir la componente padre es &lsquo;listado-articulos&rsquo; y la componente hija es &lsquo;item-articulo&rsquo;.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/9/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:27:59 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">27 Componentes: montaje dinamico</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            En Vue podemos montar las componentes en forma dinámica, es decir que a partir de ciertos eventos mostrar una componente y ocultar otra.
+Si bien se puede con las directivas v-if y v-show mostrar y ocultar componentes hay otra forma de montar una determinada componente mediante la etiqueta component:
+&lt;component v-bind:is=&#34;nombre de la componente&#34;&gt;&lt;/component&gt; Problema Crear dos componentes llamadas &lsquo;articulos&rsquo; y &lsquo;proveedores&rsquo;. Luego en la interfaz visual mediante dos botones indicar cual de las dos componentes se debe ver en la página.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/8/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:27:56 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">28 Formato resumido de las directivas v-bind y v-on</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            La directiva v-bind: y v-on: pueden resumirse o definir atajos.
+  La forma resumida de v-bind: es solo los dos puntos.
+  La forma resumida de v-on: es @click.
+  Problema   Mostrar una dirección web en un ancla rescatando del modelo la url. Disponer un botón que al ser presionado redirija a otra página.
+  Resolver el problema utilizando formato normal para las directivas y el formato resumido.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/7/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:27:51 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">29 Extension Vue Devtools para depuracion de aplicaciones</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Existe una extensión oficial de Vue.js que nos permite cuando estamos desarrollando una aplicación conocer los valores almacenados en el modelo.
+  Esta extensión nos facilita la depuración de nuestra aplicación Vue.
+  Debemos descargar la extensión Vue Devtools de aquí
+  Para el correcto funcionamiento de la extensión debemos ejecutar la aplicación importando el framework Vue.js no reducido:
+vue.js (versión de desarrollo) vue.min.js (versión definitiva con el menor tamaño pero no funciona Vue Devtools) Una vez instalada debemos abrir en el navegador las &ldquo;Herramientas para desarrolladores (por ejemplo Chrome) y consultar el estado del modelo de la aplicación:
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/6/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:27:47 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">30 Organización tradicional de archivos</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            La forma tradicional de organizar el código cuando desarrollamos un sitio es:
+ Archivos HTML Archivos JS Archivos CSS  Ejemplo
+Crear una componente llamada &lsquo;tarjeta&rsquo; que permita mostrar un recuadro con un título y un cuerpo. Organizar todo el proyecto en los tres archivos clásicos.
+pagina1.html
+&lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;Prueba Vue&lt;/title&gt;  &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt; &lt;link rel=&#34;stylesheet&#34; href=&#34;estilos.css&#34;&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;aplicacion&#34;&gt; &lt;tarjeta titulo=&#34;Título de la tarjeta&#34; ancho=&#34;30%&#34;&gt; &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+    </div>
+</a>
+
+		
+	</div>
+
+	<div class="pagination">
+		
+			<a href="/page/2/" class="left arrow">&#8592;</a>
+		
+		
+			<a href="/page/4/" class="right arrow">&#8594;</a>
+		
+
+		<span>3</span>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.3302394 -0500 -05 m=&#43;1.407041401">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

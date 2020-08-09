@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>23 Componentes:slot &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:28:16 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">23 Componentes:slot</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>La interfaz de una componente la podemos transformar mediante datos que le enviamos a sus propiedades y también veremos ahora que el contenido del &lsquo;template&rsquo; puede ser modificado mediante el concepto de &lsquo;slot&rsquo;.</p>
+<p>Los slot (espacio) se los declara dentro del template de la componente y son espacios que pueden ser redefinidos cuando definimos una componente en el HTML.</p>
+<h1 id="problema">Problema</h1>
+<p>Crear una componente que muestre dos botones &lsquo;confirmar&rsquo;, &lsquo;cancelar&rsquo; y un hipervínculo. Definir un slot en la componente para poder agregar botones a otras actividades remplazando al hipervínculo.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+    &lt;<span style="color:#f92672">barra-botones</span>&gt;&lt;/<span style="color:#f92672">barra-botones</span>&gt;
+    &lt;<span style="color:#f92672">hr</span>&gt;
+    &lt;<span style="color:#f92672">barra-botones</span>&gt;
+      &lt;<span style="color:#f92672">button</span>&gt;Alta&lt;/<span style="color:#f92672">button</span>&gt; &lt;<span style="color:#f92672">button</span>&gt;Baja&lt;/<span style="color:#f92672">button</span>&gt; &lt;<span style="color:#f92672">button</span>&gt;Modificacion&lt;/<span style="color:#f92672">button</span>&gt;
+    &lt;/<span style="color:#f92672">barra-botones</span>&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+ 
+&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+<span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;barra-botones&#39;</span>,{
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">    &lt;div&gt;&lt;button&gt;Confirmar&lt;/button&gt;
+</span><span style="color:#e6db74">         &lt;button&gt;Cancelar&lt;/button&gt;
+</span><span style="color:#e6db74">         &lt;slot&gt;&lt;a href=&#34;#&#34;&gt;Otras opciones&lt;/a&gt;&lt;/slot&gt;
+</span><span style="color:#e6db74">    &lt;/div&gt;
+</span><span style="color:#e6db74">  `</span>
+})
+
+<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>
+})
+&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><p>En el navegador tenemos:</p>
+<p><code>Confirmar</code>  <code>Cancelar</code> <code>Otras</code>   <code>opciones</code>
+<code>Confirmar</code>  <code>Cancelar</code>  <code>Alta</code>  <code>Baja</code> <code>Modificacion</code></p>
+<p>Cuando en el HTML creamos una componente de tipo &lsquo;barra-botones&rsquo; sin ningún contenido luego aparece en la página los dos botones y el hipervínculo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#f92672">barra-botones</span>&gt;&lt;/<span style="color:#f92672">barra-botones</span>&gt;
+
+</code></pre></div><p>Pero cuando creamos una componente y le pasamos dentro tres botones luego los mismos se agregan a la componente:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#f92672">barra-botones</span>&gt;
+      &lt;<span style="color:#f92672">button</span>&gt;Alta&lt;/<span style="color:#f92672">button</span>&gt; &lt;<span style="color:#f92672">button</span>&gt;Baja&lt;/<span style="color:#f92672">button</span>&gt; &lt;<span style="color:#f92672">button</span>&gt;Modificacion&lt;/<span style="color:#f92672">button</span>&gt;
+    &lt;/<span style="color:#f92672">barra-botones</span>&gt;
+</code></pre></div><p>En la definición del template se especifica un slot con la etiqueta &lsquo;slot&rsquo; y dentro de la misma puede estar vacía o tener HTML que por defecto aparece si no se especifica valores al crear la componente en la página:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;barra-botones&#39;</span>,{
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">    &lt;div&gt;&lt;button&gt;Confirmar&lt;/button&gt;
+</span><span style="color:#e6db74">         &lt;button&gt;Cancelar&lt;/button&gt;
+</span><span style="color:#e6db74">         &lt;slot&gt;&lt;a href=&#34;#&#34;&gt;Otras opciones&lt;/a&gt;&lt;/slot&gt;
+</span><span style="color:#e6db74">    &lt;/div&gt;
+</span><span style="color:#e6db74">  `</span>
+})
+</code></pre></div><p>Múltiples slot en una componente
+Se pueden definir más de un slot en una componente pero estamos obligados a definir un nombre en casa una para luego saber a cual accedemos.</p>
+<h1 id="problema-1">Problema</h1>
+<p>Definir una componente llamada mensaje que tenga tres slot para el titulo, cuerpo y pie del mensaje:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+    &lt;<span style="color:#f92672">mensaje</span>&gt;      
+      &lt;<span style="color:#f92672">template</span> <span style="color:#a6e22e">slot</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;titulo&#34;</span>&gt;&lt;<span style="color:#f92672">h1</span>&gt;Título del mensaje&lt;/<span style="color:#f92672">h1</span>&gt;&lt;/<span style="color:#f92672">template</span>&gt;
+      &lt;<span style="color:#f92672">template</span> <span style="color:#a6e22e">slot</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cuerpo&#34;</span>&gt;&lt;<span style="color:#f92672">p</span>&gt;Cuerpo del mensaje&lt;/<span style="color:#f92672">p</span>&gt;&lt;/<span style="color:#f92672">template</span>&gt;
+      &lt;<span style="color:#f92672">template</span> <span style="color:#a6e22e">slot</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pie&#34;</span>&gt;&lt;<span style="color:#f92672">p</span>&gt;Pie del mensaje&lt;/<span style="color:#f92672">p</span>&gt;&lt;/<span style="color:#f92672">template</span>&gt;
+    &lt;/<span style="color:#f92672">mensaje</span>&gt;
+    &lt;<span style="color:#f92672">hr</span>&gt;
+    &lt;<span style="color:#f92672">mensaje</span>&gt;&lt;/<span style="color:#f92672">mensaje</span>&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+ 
+&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+
+<span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">component</span>(<span style="color:#e6db74">&#39;mensaje&#39;</span>,{
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">    &lt;div&gt;
+</span><span style="color:#e6db74">      &lt;slot name=&#34;titulo&#34;&gt;&lt;h1&gt;Sin titulo&lt;/h1&gt;&lt;/slot&gt;
+</span><span style="color:#e6db74">      &lt;slot name=&#34;cuerpo&#34;&gt;&lt;p&gt;Sin cuerpo&lt;/p&gt;&lt;/slot&gt;
+</span><span style="color:#e6db74">      &lt;slot name=&#34;pie&#34;&gt;&lt;/slot&gt;      
+</span><span style="color:#e6db74">    &lt;/div&gt;
+</span><span style="color:#e6db74">  `</span>
+})
+
+
+<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>
+})
+&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><h1 id="título-del-mensaje">Título del mensaje</h1>
+<p>Cuerpo del mensaje</p>
+<p>Pie del mensaje</p>
+<h1 id="sin-titulo">Sin titulo</h1>
+<p>Sin cuerpo</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/12/" class="left arrow">&#8592;</a>
+		<a href="/14/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2105312 -0500 -05 m=&#43;1.287333201">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

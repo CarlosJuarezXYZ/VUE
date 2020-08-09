@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>10 Formularios: control checkbox &middot; VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <span>Written by</span>
+        
+        <br>
+        <span>on&nbsp;</span><time datetime="2020-08-07 20:29:08 -0500 -05">August 7, 2020</time>
+</div>
+		<h1 class="post-title">10 Formularios: control checkbox</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Veamos ahora como asociar un control input (checkbox) con el modelo de datos de Vue.</p>
+<p>Un checkbox puede estar seleccionado o no. Debemos almacenar en el modelo un valor true o false indicando si queremos que el checkbox esté o no seleccionado.</p>
+<h1 id="problema">Problema</h1>
+<p>Mostrar un checkbox no seleccionado. Cuando el operador lo presione hacer visible un botón de confirmación.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+<span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+ &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;
+     &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;terminos&#34;</span>&gt;
+     Acepto los términos y condiciones
+   &lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">v-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;terminos&#34;</span>&gt;Confirmar&lt;/<span style="color:#f92672">button</span>&gt;
+ &lt;/<span style="color:#f92672">div</span>&gt;
+
+ &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+ &lt;<span style="color:#f92672">script</span>&gt;
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+       <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+       <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+         <span style="color:#a6e22e">terminos</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+       }
+   })
+ &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><p>[ ] <code>Acepto los terminos y condiciones</code></p>
+<p>El checkbox está asociado con la propiedad &lsquo;terminos&rsquo; definida en el modelo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+     &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;terminos&#34;</span>&gt;
+
+</code></pre></div><p>En el modelo iniciamos la propiedad &lsquo;terminos&rsquo; con el valor false:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">       <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+         <span style="color:#a6e22e">terminos</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+       }
+</code></pre></div><p>El botón inicialmente no existe porque por medio de la directiva v-if se verifica con falso, ya que la propiedad &lsquo;terminos&rsquo; tiene dicho valor:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+   &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">v-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;terminos&#34;</span>&gt;Confirmar&lt;/<span style="color:#f92672">button</span>&gt;
+
+</code></pre></div><p>Una vez que el operador chequea el cuadro de selección la propiedad &lsquo;terminos&rsquo; almacena un true y seguidamente la directiva v-if se verifica verdadera y pasa a mostrarse el botón.</p>
+<h1 id="varios-checkbox-asociados-a-un-arregle-del-modelo">Varios checkbox asociados a un arregle del modelo.</h1>
+<p>A diferencia de varios radios que actúan en conjunto, los checkbox son independientes unos de otros, es decir que podemos seleccionar varios y no cambia el estado de los otros.</p>
+<p>En algunas situaciones nos puede ser conveniente tener almacenado en un arreglo cuales de los checkbox está seleccionado, para esto Vue nos permite asociar varios checkbox a un arreglo.</p>
+<h1 id="problema-1">Problema</h1>
+<p>Disponer 4 checkbox con diferentes lenguajes de programación. Asociar todos los checkbox a un arreglo del modelo y mostrar su contenido en otra parte de la página.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+<span style="color:#75715e">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#f92672">html</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">title</span>&gt;Prueba Vue&lt;/<span style="color:#f92672">title</span>&gt; 
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+  &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+ &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;aplicacion&#34;</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;C++&#34;</span>&gt;C++&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;C&#34;</span>&gt;C&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;C#&#34;</span>&gt;C#&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Java&#34;</span>&gt;Java&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Kotlin&#34;</span>&gt;Kotlin&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Python&#34;</span>&gt;Python&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Ruby&#34;</span>&gt;Ruby&lt;/<span style="color:#f92672">p</span>&gt;      
+   &lt;<span style="color:#f92672">h3</span>&gt;Lenguajes seleccionados&lt;/<span style="color:#f92672">h3</span>&gt;
+   &lt;<span style="color:#f92672">ul</span>&gt;
+     &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguaje in lenguajes&#34;</span>&gt;{{lenguaje}}&lt;/<span style="color:#f92672">li</span>&gt;
+   &lt;/<span style="color:#f92672">ul</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;Cantidad de lenguajes que conoce:{{lenguajes.length}}&lt;/<span style="color:#f92672">p</span>&gt;
+ &lt;/<span style="color:#f92672">div</span>&gt;
+ 
+ &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/vue&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+ &lt;<span style="color:#f92672">script</span>&gt;
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+       <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+       <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">lenguajes</span><span style="color:#f92672">:</span> []
+       }
+   })
+ &lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;
+
+</code></pre></div><p>[ ] C++</p>
+<p>[ ] C</p>
+<p>[ ] C#</p>
+<p>[ ] Java</p>
+<p>[ ] Kotlin</p>
+<p>[ ] Python</p>
+<p>[ ] Ruby</p>
+<h1 id="lenguajes-seleccionados">Lenguajes seleccionados</h1>
+<p>Cantidad de lenguajes que conoce:0</p>
+<p>Todos los checkbox están asociados al mismo modelo de datos:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+&lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;C++&#34;</span>&gt;C++&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;C&#34;</span>&gt;C&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;C#&#34;</span>&gt;C#&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Java&#34;</span>&gt;Java&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Kotlin&#34;</span>&gt;Kotlin&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Python&#34;</span>&gt;Python&lt;/<span style="color:#f92672">p</span>&gt;
+   &lt;<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">v-model</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguajes&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Ruby&#34;</span>&gt;Ruby&lt;/<span style="color:#f92672">p</span>&gt; 
+</code></pre></div><p>El atributo definido en el modelo se trata de un vector:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">app</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+       <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#aplicacion&#39;</span>,
+       <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>{ 
+        <span style="color:#a6e22e">lenguajes</span><span style="color:#f92672">:</span> []
+       }
+   })
+</code></pre></div><p>Para mostrar todos los lenguajes seleccionados en una lista no ordenada de HTML se hace mediante la directiva v-for iterando el vector:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">   &lt;<span style="color:#f92672">ul</span>&gt;
+     &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lenguaje in lenguajes&#34;</span>&gt;{{lenguaje}}&lt;/<span style="color:#f92672">li</span>&gt;
+   &lt;/<span style="color:#f92672">ul</span>&gt;
+</code></pre></div><p>Finalmente para mostrar la cantidad de lenguajes accedemos a la propiedad length del vector &lsquo;lenguajes&rsquo; definido en el modelo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+   &lt;<span style="color:#f92672">p</span>&gt;Cantidad de lenguajes que conoce:{{lenguajes.length}}&lt;/<span style="color:#f92672">p</span>&gt;
+   
+</code></pre></div>
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/25/" class="left arrow">&#8592;</a>
+		<a href="/27/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.2599126 -0500 -05 m=&#43;1.336714601">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

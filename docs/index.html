@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+	<meta name="generator" content="Hugo 0.74.3" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="">
+
+		<title>VUE</title>
+
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/fonts.css">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+		
+		<link href="/index.xml" rel="alternate" type="application/rss+xml" title="VUE" />
+	</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">VUE</h2>
+				</a>
+				<ul>
+    
+    
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	
+
+
+	<div class="catalogue">
+		
+			<a href="http://example.org/35/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:46 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">1 ¿Que es Vue?</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Vue es un framework de Javascript progresivo para la generación de interfaces visuales.
+Está pensado para su fácil adopción en aplicaciones pequeñas pero tiene la posibilidad de generar componentes y ser reutilizadas en proyectos medianos y grandes.
+Sus principales competidores son Angular (Google) y React (Facebook), a diferencia de estos Vue no es un desarrollo de una gran empresa pero tiene el apoyo de muchas pequeñas y una gran comunidad.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/34/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:42 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">2 Directivas en Vue</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Una directiva es un atributo de un elemento HTML que luego va a interpretar el framework Vue.
+Las directivas siempre comienzan con los caracteres &ldquo;v-&rdquo; y son ejemplos de directivas:
+ v-bind v-model v-if v-else v-for  Existen muchas más pero nombramos estas que serán las que primero utilizaremos.
+Veamos como se define una directiva en un elemento HTML:
+&lt;input type=&#34;text&#34; v-model=&#34;nombre&#34;&gt; La directiva v-model asocia el dato que se ingresa en el control &ldquo;input&rdquo; con un atributo del modelo de datos que debe definirse luego en Javascript:
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/33/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:38 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">3 Directivas v-if,v-else-if,v-show</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Dijimos anteriormente que Vue utiliza el concepto de directivas para una comunicación entre la vista (HTML) y el modelo (programa en Javascript)
+La primer directiva condicional que veremos se llama v-if y me permite definir una condición que dependiendo de su resultado luego la etiqueta HTML o conjunto de etiquetas se muestran o no.
+Problema Ingresar una edad en un control de tipo input (number) y mostrar un mensaje si se ingresa un valor mayor o igual a 18.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/32/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:34 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">4 Directivas v-for con arreglos</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            vimos en el concepto anterior como podemos condicionar que aparezca o no un elemento HTML dependiendo del estado de una propiedad del modelo de datos. Ahora veremos como podemos mostrar datos almacenados en el modelo en un arreglo.
+Para mostrar datos almacenados en un arreglo en el modelo debemos iterar la estructura de datos e imprimir uno a uno dichos elementos mediante la directiva v-for.
+Problema Definir en el modelo de datos un vector con nombres de lenguajes de programación.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/31/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:26 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">5 Directivas v-for con arreglos de objetos literales</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Veremos una variante cuando trabajamos con la directiva v-for y debemos iterar un arreglo con objetos para acceder a todos sus elementos.
+Problema Se tiene el siguiente arreglo con objetos literales que representan artículos:
+articulos: [{ codigo: 1, descripcion: &#39;papas&#39;, precio: 12.52 },{ codigo: 2, descripcion: &#39;naranjas&#39;, precio: 21 },{ codigo: 3, descripcion: &#39;peras&#39;, precio: 18.20 }] Mostrar en una tabla HTML los datos almacenados en el arreglo.
+&lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;Prueba Vue&lt;/title&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;aplicacion&#34;&gt; &lt;table border=&#34;1&#34;&gt; &lt;tr&gt;&lt;td&gt;Código&lt;/td&gt;&lt;td&gt;Descripción&lt;/td&gt;&lt;td&gt;Precio&lt;/td&gt;&lt;/tr&gt; &lt;template v-for=&#34;articulo in articulos&#34;&gt; &lt;tr&gt; &lt;td&gt;{{articulo.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/30/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:23 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">6 captura de eventos en Vue(v-on:click)</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            En Vue podemos capturar todos los eventos que genera el DOM (clic de un botón, presión de una tecla, toma de foco de un control de un formulario etc.) y para ello tenemos una directiva llamada v-on
+La directiva v-on captura todos los eventos, pero podemos ser mas precisos y filtrar cual evento capturar:
+ v-on:click v-on:dblclick v-on:mouseenter v-on:mouseleave v-on:mousemove v-on:keypress v-on:keyup etc.  Problema Mostrar un botón que tenga como etiqueta un 0.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/29/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:19 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">7 Eventos:v-on:keypress,v-on:keyup</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Veamos como se captura cuando se presiona una tecla y cuando se la suelta. Para esto tenemos los eventos v-on:keypress que se dispara cuando el operador presiona una tecla y v-on:keyup cuando suelta la tecla.
+Debemos definir que etiqueta HTML capturará el evento de presión de tecla.
+Problema Mostrar en una lista ordenada una serie de actividades a realizar. Asociar dichas actividades a un vector en el modelo. Mediante un control de tipo input (text) permitir ingresar nuevas actividades y al presionar la tecla enter actualizar la lista ordenada con la nueva actividad.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/28/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:15 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">8 Eventos: v-on:submit</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Un evento muy usado es cuando se presiona un control de tipo input (submit) que por defecto toma todos los datos del formulario y los envía a nuestro servidor web.
+Veremos como podemos prevenir el envío y ejecutar algún algoritmo en Javascript mediante Vue.
+Problema Almacenar en un arreglo códigos de artículos, sus descripciones y precios. Mostrar en una tabla HTML los datos y mediante un formulario HTML permitir ingresar nuevos datos en el arreglo.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/27/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:12 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">9 Formularios:controles radio</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Veremos como administrar en Vue un conjunto de controles input (radio) para identificar la opción seleccionada.
+Para trabajar un conjunto de controles radio debemos definir en el modelo de datos una única propiedad que almacenará el valor de la seleccionada.
+Es importante decir que debemos fijar en el modelo cual es la que se encuentra seleccionada inicialmente, no rescata los valores iniciales definidos en un control como podría ser:
+&lt;input checked type=&quot;radio&quot; value=&quot;universitarios&quot; v-model=&quot;estudios&quot; id=&quot;universitarios&quot;&gt; Luego deberíamos iniciar el modelo:  estudios: 'universitarios'  Problema Crear cuatro controles de tipo radio que permitan seleccionar que tipo de estudios tiene el visitante.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="http://example.org/26/" class="catalogue-item">
+    <div>
+        <time datetime="2020-08-07 20:29:08 -0500 -05" class="catalogue-time">August 7, 2020</time>
+        <h1 class="catalogue-title">10 Formularios: control checkbox</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Veamos ahora como asociar un control input (checkbox) con el modelo de datos de Vue.
+Un checkbox puede estar seleccionado o no. Debemos almacenar en el modelo un valor true o false indicando si queremos que el checkbox esté o no seleccionado.
+Problema Mostrar un checkbox no seleccionado. Cuando el operador lo presione hacer visible un botón de confirmación.
+&lt;!doctype html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;Prueba Vue&lt;/title&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;aplicacion&#34;&gt; &lt;p&gt; &lt;input type=&#34;checkbox&#34; v-model=&#34;terminos&#34;&gt; Acepto los términos y condiciones &lt;/p&gt; &lt;button v-if=&#34;terminos&#34;&gt;Confirmar&lt;/button&gt; &lt;/div&gt; &lt;script src=&#34;https://cdn.
+        </p>
+    </div>
+</a>
+
+		
+	</div>
+
+	<div class="pagination">
+		
+		
+			<a href="/page/2/" class="right arrow">&#8594;</a>
+		
+
+		<span>1</span>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2020-08-08 20:22:59.3192686 -0500 -05 m=&#43;1.396070601">2020</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>
